@@ -94,8 +94,11 @@
       phase + esc(item.title) +
       '<span class="sub">' + (done ? 'Done · ' : '') + esc(item.estTime || '') + (who ? ' · ' + who : '') + ' · tap for steps</span></button></div>' +
       '<div class="gbody">' + legacy +
+      (item.alert ? '<div class="callout warn"><b class="t">Florida licences</b>' + esc(item.alert) + '</div>' : '') +
       '<div class="gsec"><h4>1. Official pages</h4>' + links + '</div>' +
-      '<div class="gsec"><h4>2. Do this</h4>' + steps + '</div>' +
+      '<div class="gsec"><h4>2. Do this</h4>' + steps +
+      ((item.earlierSteps && item.earlierSteps.length) ? '<details class="archive"><summary>Earlier wording (kept)</summary><ol class="gsteps">' + item.earlierSteps.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ol></details>' : '') +
+      '</div>' +
       '<div class="gsec"><h4>3. What to have ready</h4>' + ready + '</div>' +
       '<div class="gsec"><h4>4. Tips, phone numbers and addresses</h4>' + tips + contacts + '</div>' +
       '<div class="gsec"><h4>5. Your notes</h4>' +

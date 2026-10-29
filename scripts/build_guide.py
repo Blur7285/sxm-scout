@@ -6,6 +6,8 @@ Does not invent official URLs. Link states come from the 29 Oct 2026 recheck.
 import json
 import pathlib
 
+from open_answers import QUESTIONS, TIMELINE, UPDATES, apply_contacts
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SRC = pathlib.Path(__file__).resolve().parents[1] / "data" / "checklists-v1.json"
 OUT = ROOT / "guide-data.js"
@@ -510,29 +512,43 @@ def when_label(rule):
 
 
 def have_ready(item):
+    upd = UPDATES.get(item["id"], {})
     rows = [
         "Time to allow: %s." % item.get("estTime") or "not listed",
         "Who: %s." % (item.get("appliesTo") or "household"),
     ]
     if item.get("dependsOn"):
         rows.append("Do these first: " + ", ".join(item["dependsOn"]) + ".")
-    if item.get("cost"):
+    if upd.get("fee_line"):
+        rows.append(upd["fee_line"])
+    elif item.get("cost"):
         rows.append("Fee named in the checklist: %s." % item["cost"])
     else:
         rows.append("No fee is listed for this step. If an office asks you to pay, ask what it is for and write the amount in your notes.")
-    rows.extend(DOCS.get(item["id"], []))
-    if item["id"] not in DOCS:
-        rows.append("Nothing further is listed. Follow the steps and write dates in your notes.")
+    if "docs" in upd:
+        rows.extend(upd["docs"])
+    else:
+        rows.extend(DOCS.get(item["id"], []))
+        if item["id"] not in DOCS:
+            rows.append("Nothing further is listed. Follow the steps and write dates in your notes.")
     return rows
 
 
 def tips_for(item, cat):
+    upd = UPDATES.get(item["id"], {})
     rows = []
     if item.get("saintMartinDiff"):
         rows.append(item["saintMartinDiff"])
-    rows.extend(TIPS.get(item["id"], []))
-    if item.get("verify"):
-        rows.append("Still to confirm: " + item["verify"])
+    if "tips" in upd:
+        rows.extend(upd["tips"])
+    else:
+        rows.extend(TIPS.get(item["id"], []))
+    if "verify" in upd:
+        verify = upd["verify"]
+    else:
+        verify = item.get("verify")
+    if verify:
+        rows.append("Still to confirm: " + verify)
     if item.get("sourceNote"):
         rows.append(item["sourceNote"])
     checked = item.get("lastVerified")
@@ -545,6 +561,7 @@ def tips_for(item, cat):
 
 
 def main():
+    apply_contacts(CONTACTS)
     states = load_link_states()
     raw = json.loads(SRC.read_text())
     verified = flagged = 0
@@ -570,6 +587,22 @@ def main():
                     "state": st["state"],
                     "detail": st["detail"],
                 })
+            upd = UPDATES.get(it["id"], {})
+            seen_urls = {lnk["url"] for lnk in links}
+            for extra in upd.get("links") or []:
+                if extra["url"] in seen_urls:
+                    continue
+                seen_urls.add(extra["url"])
+                links.append(extra)
+                if extra["state"] == "verified":
+                    verified += 1
+                else:
+                    flagged += 1
+            steps = it.get("steps") or []
+            earlier = None
+            if upd.get("steps"):
+                earlier = steps
+                steps = upd["steps"]
             cids = []
             for cid in CAT_CONTACTS.get(cat["id"], []) + ITEM_CONTACTS.get(it["id"], []):
                 if cid not in cids:
@@ -578,7 +611,9 @@ def main():
                 "id": it["id"],
                 "title": it["title"],
                 "phase": it.get("phase"),
-                "steps": it.get("steps") or [],
+                "steps": steps,
+                "earlierSteps": earlier,
+                "alert": upd.get("alert") or "",
                 "links": links,
                 "haveReady": have_ready(it),
                 "tips": tips_for(it, cat),
@@ -618,15 +653,8 @@ def main():
         "flaggedLinks": flagged,
         "itemCount": sum(len(c["items"]) for c in categories),
         "disclaimer": "These steps are a planning aid from public pages and from Scout's own notes. They are not legal, tax, immigration, or medical advice. Offices change hours and fees. Each step shows when its source was last checked.",
-        "timeline": "The Home screen still has your current lease ending November 19, 2026. A long-stay visa is applied for before you leave the United States. The visa centre takes files no more than 3 months ahead, and the checklist says to book at least a month before you go. If that November date still holds, you may have to arrive as visitors (90 days in any 180) and go back to the United States to apply. Decide this before you book flights. This is a planning question, not a legal opinion.",
-        "questions": [
-            "Is November 19, 2026 still the move date, or do you wait until the visa is in the passport?",
-            "Will either of you work remotely after the move? That changes the visa and the tax steps.",
-            "Is either of you on Medicare now, or turning 65 soon? A yes or no is enough.",
-            "Will you own a car in Saint-Martin, or rent for a long time?",
-            "Which state issued each driving licence, and in which states were you born and married? State names only.",
-            "Should Social Security be paid to a US account or a euro account? Ask SSA before you close the US account.",
-        ],
+        "timeline": TIMELINE,
+        "questions": QUESTIONS,
         "contacts": CONTACTS,
         "categories": categories,
         "legacyPrefix": {
