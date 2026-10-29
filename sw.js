@@ -1,8 +1,8 @@
 /* SXM Scout service worker: network-first (updates show up when online), versioned cache as the offline fallback.
    Never touches Google sign-in / Drive / map-tile requests (other origins). */
-var VERSION = '1.0.1';
+var VERSION = '1.1.0';
 var CACHE = 'sxm-scout-' + VERSION;
-var CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
+var CORE = ['./', './index.html', './guide-data.js', './guide-ui.js', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(CORE.map(function (u) { return new Request(u, { cache: 'reload' }); })); }).catch(function () {}).then(function () { return self.skipWaiting(); }));
 });
