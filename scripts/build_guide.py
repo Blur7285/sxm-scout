@@ -646,7 +646,24 @@ def main():
         },
     }
     OUT.write_text("window.SXMGuide = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
+    inline_guides()
     print("items", data["itemCount"], "verified", verified, "flagged", flagged, "bytes", OUT.stat().st_size)
+
+
+def inline_guides():
+    """Keep the guide scripts inside index.html so a single-file preview can run them."""
+    html_path = ROOT / "index.html"
+    html = html_path.read_text(encoding="utf-8")
+    start = "<!-- GUIDE-INLINE-START -->"
+    end = "<!-- GUIDE-INLINE-END -->"
+    if start not in html or end not in html:
+        raise SystemExit("index.html is missing guide inline markers")
+    data_js = (ROOT / "guide-data.js").read_text(encoding="utf-8").strip()
+    ui_js = (ROOT / "guide-ui.js").read_text(encoding="utf-8").strip()
+    block = start + "\n<script>\n" + data_js + "\n</script>\n<script>\n" + ui_js + "\n</script>\n" + end
+    pre, rest = html.split(start, 1)
+    _, post = rest.split(end, 1)
+    html_path.write_text(pre + block + post, encoding="utf-8")
 
 
 if __name__ == "__main__":
