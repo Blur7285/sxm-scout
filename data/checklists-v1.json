@@ -1,0 +1,5546 @@
+{
+ "schemaVersion": 1,
+ "generated": "2026-10-28",
+ "region": "Saint-Martin (French side, COM 97150)",
+ "profileFields": {
+  "citizenship": "list of ISO-like country names, e.g. [\"US\"]",
+  "needsVisa": "true if not EU/EEA/Swiss",
+  "incomeSources": "e.g. [\"US Social Security\"]",
+  "usMedicare": "bool",
+  "married": "bool",
+  "worksRemotely": "bool",
+  "plansToDrive": "bool",
+  "plansToOwnCar": "bool",
+  "licenceIssuedOutsideEU": "bool",
+  "plansToBuy": "bool",
+  "hasPets": "bool",
+  "residesIn": "country before the move",
+  "homeNumberCountry": "country of the phone number kept"
+ },
+ "appliesWhenRule": "Show an item when appliesWhen is null, or when every key in appliesWhen matches the client profile (list = any match). Ignore the \"note\" key.",
+ "categories": [
+  {
+   "id": "healthcare",
+   "title": "Healthcare",
+   "intro": "Get private health insurance first, because you need it for the visa. After about 3 months of living there, apply for the French state cover (PUMa) and the carte Vitale. Then decide what to do about US Medicare.",
+   "appSection": "healthcare",
+   "appTrackerKey": "sxm-hi-docs2",
+   "saintMartinDiffers": "Saint-Martin has no CPAM of its own. Health cover is run by the CGSS of Guadeloupe, which has a front desk at Spring Concordia in Marigot. Files go to its postal address in Les Abymes (Guadeloupe).",
+   "items": [
+    {
+     "id": "h4",
+     "title": "Get health insurance quote A (international plan)",
+     "phase": "Before you leave: private insurance",
+     "steps": [
+      "Write down the age of each person to cover and your arrival date.",
+      "Contact one international health insurer that covers people living in French Saint-Martin.",
+      "Ask for a yearly price in euros for everyone to be covered.",
+      "Ask if it covers doctor visits, specialists, prescriptions, hospital stays and evacuation.",
+      "Ask how it handles health conditions you already have.",
+      "Save the quote as a PDF in the app's notes."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: 'Visiteur' residence card",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F302 (health insurance is required for the visiteur status)",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 1,
+     "dependsOn": [],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h4",
+      "cost:c7",
+      "move:mv_ins"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "h5",
+     "title": "Get health insurance quote B (second insurer, same questions)",
+     "phase": "Before you leave: private insurance",
+     "steps": [
+      "Contact a second insurer.",
+      "Ask the same questions you asked for quote A.",
+      "Put both quotes side by side: yearly price, deductible, area covered, evacuation.",
+      "Pick one."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: 'Visiteur' residence card",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F302",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 2,
+     "dependsOn": [
+      "h4"
+     ],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h5"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "h6",
+     "title": "Read the rules on health conditions you already have",
+     "phase": "Before you leave: private insurance",
+     "steps": [
+      "Open the policy wording for the plan you picked.",
+      "Find the section on 'pre-existing conditions'.",
+      "Write down any waiting period or anything that is not covered.",
+      "If something matters to you, ask the insurer to confirm it by email."
+     ],
+     "links": [],
+     "source": "Named source: the insurer's policy wording",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 3,
+     "dependsOn": [
+      "h5"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h6"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "h8",
+     "title": "Ask the insurer for a certificate written for the visa",
+     "phase": "Before you leave: private insurance",
+     "steps": [
+      "Ask the insurer for an 'attestation d'assurance' in French or English.",
+      "Check it shows every insured name, start and end dates, and that it covers the whole stay.",
+      "Check it covers Saint-Martin (French side).",
+      "Check the amounts are shown in euros.",
+      "Save the PDF and print one copy for the visa folder."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: 'Visiteur' residence card",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
+       "status": "ok (200)"
+      },
+      {
+       "label": "France-Visas: Long-stay visa",
+       "url": "https://www.france-visas.gouv.fr/en/visa-de-long-sejour",
+       "status": "blocked to curl (403); page found in search index this session"
+      }
+     ],
+     "source": "service-public.fr F302; France-Visas",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 4,
+     "dependsOn": [
+      "h5"
+     ],
+     "estTime": "1 week (insurer)",
+     "cost": null,
+     "verify": "The exact wording and minimum cover the consulate accepts. France-Visas lists the documents for your file; check it when you build the application.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h8",
+      "cl:c4"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "h9",
+     "title": "Set the policy to start on the day you arrive",
+     "phase": "Before you leave: private insurance",
+     "steps": [
+      "Tell the insurer your flight date.",
+      "Ask them to start the policy that day, not later.",
+      "If you have travel insurance for the trip, check it ends after the new policy starts."
+     ],
+     "links": [],
+     "source": "Named source: the insurer",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 5,
+     "dependsOn": [
+      "h5"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h9",
+      "move:m60_5"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "h7",
+     "title": "Decide on medical evacuation cover (yes or no)",
+     "phase": "Before you leave: private insurance",
+     "steps": [
+      "Check if your health plan already includes evacuation.",
+      "If not, get one price for an evacuation membership.",
+      "Decide and write the answer in notes."
+     ],
+     "links": [],
+     "source": "Named source: the insurer",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 6,
+     "dependsOn": [
+      "h5"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h7"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "h1",
+     "title": "Do doctor, dentist and eye check-ups before you leave",
+     "phase": "Before you leave: private insurance",
+     "steps": [
+      "Book appointments with your current doctor, dentist and eye doctor.",
+      "Ask each office for a copy of your records and recent test results.",
+      "Save the copies in the cloud and keep paper copies in your carry-on."
+     ],
+     "links": [],
+     "source": "Named source: your current doctors",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 7,
+     "dependsOn": [],
+     "estTime": "2 to 6 weeks",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h1",
+      "cl:c1",
+      "move:mv_med"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "h10",
+     "title": "Store your insurance card and policy offline",
+     "phase": "Before you leave: private insurance",
+     "steps": [
+      "Download the policy, the card and the claims phone number.",
+      "Save them on every phone so they open without internet.",
+      "Print one copy for the document bag."
+     ],
+     "links": [],
+     "source": "Named source: the insurer",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 8,
+     "dependsOn": [
+      "h9"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h10"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hc01",
+     "title": "Read what PUMa is and who can get it",
+     "phase": "After you arrive: French state cover (PUMa)",
+     "steps": [
+      "Open the service-public.fr page on PUMa.",
+      "Read the part 'Sans exercice d'une activité professionnelle' (no job in France).",
+      "Note the key rule: you must live there 3 months without a break before your cover opens.",
+      "Note that you must then live there at least 6 months a year to keep it."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: What is PUMa (French state health cover)",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34308",
+       "status": "ok (200)"
+      },
+      {
+       "label": "ameli.fr: PUMa and form S1106",
+       "url": "https://www.ameli.fr/assure/droits-demarches/principes/protection-universelle-maladie",
+       "status": "blocked to curl (403); page read with WebFetch this session"
+      }
+     ],
+     "source": "service-public.fr F34308; ameli.fr",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 9,
+     "dependsOn": [],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": "service-public.fr says a decree is expected on a new payment for residents who do not work and do not pay French social charges (CSG). Check if it has been published and how much it is.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hc02",
+     "title": "Put the 3-month date in your calendar",
+     "phase": "After you arrive: French state cover (PUMa)",
+     "steps": [
+      "Take your arrival date in Saint-Martin.",
+      "Add 3 months.",
+      "Put a reminder on that date called 'Send PUMa file'."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: What is PUMa (French state health cover)",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34308",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F34308",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 10,
+     "dependsOn": [
+      "hc01"
+     ],
+     "estTime": "5 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "cl:c6",
+      "move:mm_1"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hc03",
+     "title": "Collect the papers for the PUMa file (each person)",
+     "phase": "After you arrive: French state cover (PUMa)",
+     "steps": [
+      "Print form S1106 'Demande d'ouverture des droits à l'assurance maladie' from ameli.fr.",
+      "Fill it in, one form per person.",
+      "Add a copy of your passport.",
+      "Add proof of your legal stay: validated long-stay visa or residence card.",
+      "Add proof you have lived there 3 months (for example your lease and bills).",
+      "Add a recent proof of address and a French bank RIB.",
+      "Add your birth certificate if they ask for it (see Civil records)."
+     ],
+     "links": [
+      {
+       "label": "ameli.fr: PUMa and form S1106",
+       "url": "https://www.ameli.fr/assure/droits-demarches/principes/protection-universelle-maladie",
+       "status": "blocked to curl (403); page read with WebFetch this session"
+      },
+      {
+       "label": "service-public.fr: What is PUMa (French state health cover)",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34308",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "ameli.fr (form S1106); service-public.fr F34308",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 11,
+     "dependsOn": [
+      "hc02",
+      "b8",
+      "ld31"
+     ],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": "The exact document list the CGSS Saint-Martin desk wants, and whether the birth certificate must be apostilled and translated.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h15"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hc04",
+     "title": "Book an appointment at the CGSS desk in Marigot",
+     "phase": "After you arrive: French state cover (PUMa)",
+     "steps": [
+      "Call 36 46 (or +33 1 84 90 36 46 from a non-French phone).",
+      "Say you want an appointment at the 'Accueil Maladie de Saint-Martin'.",
+      "The desk is at 6 rue Jean-Luc Hamlet, Spring Concordia.",
+      "Write the date and time in notes."
+     ],
+     "links": [
+      {
+       "label": "Annuaire service-public: CGSS health office, Saint-Martin",
+       "url": "https://lannuaire.service-public.gouv.fr/collectivites-d-outre-mer/saint-martin/635a7d03-af7b-4cca-8f8b-1c28d5c6d692",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Santé.fr: CGSS Guadeloupe, Saint-Martin office",
+       "url": "https://www.sante.fr/caisse-generale-de-securite-sociale-cgss-de-guadeloupe-accueil-de-saint-martin",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Annuaire service-public.fr: CGSS Guadeloupe, Saint-Martin office",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 12,
+     "dependsOn": [
+      "hc03"
+     ],
+     "estTime": "20 min call",
+     "cost": null,
+     "verify": "Opening hours differ between sources (the annuaire says weekday mornings). Confirm when you call.",
+     "saintMartinDiff": "In mainland France you deal with a CPAM. In Saint-Martin it is the CGSS of Guadeloupe.",
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hc05",
+     "title": "Hand in or mail the PUMa file and keep proof",
+     "phase": "After you arrive: French state cover (PUMa)",
+     "steps": [
+      "Bring the full file to your appointment, or mail it.",
+      "The postal address is: Assurance Maladie, CS 48105, 97181 Les Abymes Cedex.",
+      "If you mail it, use a registered letter with proof of receipt (lettre recommandée avec accusé de réception).",
+      "Keep a full copy of what you sent."
+     ],
+     "links": [
+      {
+       "label": "Annuaire service-public: CGSS health office, Saint-Martin",
+       "url": "https://lannuaire.service-public.gouv.fr/collectivites-d-outre-mer/saint-martin/635a7d03-af7b-4cca-8f8b-1c28d5c6d692",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Annuaire service-public.fr: CGSS postal address",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 13,
+     "dependsOn": [
+      "hc04"
+     ],
+     "estTime": "1 hour",
+     "cost": "Registered letter: a few euros",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hc06",
+     "title": "Get your social security number and open your ameli account",
+     "phase": "After you arrive: French state cover (PUMa)",
+     "steps": [
+      "Wait for the letter with your social security number.",
+      "Go to ameli.fr and click 'Créer mon compte'.",
+      "Follow the steps using the number in the letter.",
+      "Download the ameli app on your phone."
+     ],
+     "links": [
+      {
+       "label": "ameli.fr: PUMa and form S1106",
+       "url": "https://www.ameli.fr/assure/droits-demarches/principes/protection-universelle-maladie",
+       "status": "blocked to curl (403); page read with WebFetch this session"
+      }
+     ],
+     "source": "ameli.fr",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 14,
+     "dependsOn": [
+      "hc05"
+     ],
+     "estTime": "30 min (after the letter)",
+     "cost": null,
+     "verify": "How long the CGSS takes to answer for Saint-Martin files.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hc07",
+     "title": "Order your carte Vitale",
+     "phase": "After you arrive: French state cover (PUMa)",
+     "steps": [
+      "Log in to your ameli account.",
+      "Look for the carte Vitale order (commander ma carte Vitale).",
+      "Upload an ID photo and a copy of your passport if asked.",
+      "Wait for the card by mail. Keep using your printed rights letter (attestation de droits) until then."
+     ],
+     "links": [
+      {
+       "label": "ameli.fr: The carte Vitale",
+       "url": "https://www.ameli.fr/assure/droits-demarches/principes/carte-vitale",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "ameli.fr",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 15,
+     "dependsOn": [
+      "hc06"
+     ],
+     "estTime": "30 min, then a few weeks",
+     "cost": null,
+     "verify": "Whether the carte Vitale app (digital card) is offered to Saint-Martin residents.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "h14",
+     "title": "Choose a family doctor (médecin traitant) and register them",
+     "phase": "After you arrive: French state cover (PUMa)",
+     "steps": [
+      "Find a general doctor (médecin généraliste) near you who takes new patients.",
+      "At the first visit, ask them to be your 'médecin traitant'.",
+      "They register it online for you. Check it appears in your ameli account.",
+      "Do this for each person."
+     ],
+     "links": [
+      {
+       "label": "ameli.fr: Choosing a médecin traitant",
+       "url": "https://www.ameli.fr/assure/remboursements/etre-bien-rembourse/medecin-traitant",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "ameli.fr",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 16,
+     "dependsOn": [
+      "hc06"
+     ],
+     "estTime": "1 visit",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h14",
+      "move:mf_3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "h16",
+     "title": "Compare top-up cover (mutuelle)",
+     "phase": "After you arrive: French state cover (PUMa)",
+     "steps": [
+      "PUMa pays only part of most bills. A mutuelle pays some or all of the rest.",
+      "Ask 2 insurers in Saint-Martin for a mutuelle price for everyone in the household.",
+      "If your income is low, read about the Complémentaire santé solidaire (free or low-cost top-up).",
+      "Decide if you keep your international plan, switch to a mutuelle, or keep both for a while."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Complémentaire santé solidaire (low-income top-up)",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10027",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Complémentaire santé solidaire (official site)",
+       "url": "https://www.complementaire-sante-solidaire.gouv.fr/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F10027; complementaire-sante-solidaire.gouv.fr",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 17,
+     "dependsOn": [
+      "hc06"
+     ],
+     "estTime": "2 hours",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h16"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "h13",
+     "title": "Save the hospital and emergency numbers",
+     "phase": "After you arrive: French state cover (PUMa)",
+     "steps": [
+      "Save the Louis-Constant Fleming hospital (Spring Concordia) in every phone.",
+      "Save 15 (medical emergency), 18 (fire), 17 (police) and 112 (EU emergency).",
+      "Find the nearest pharmacy to your home."
+     ],
+     "links": [
+      {
+       "label": "Santé.fr: Louis-Constant Fleming hospital, Saint-Martin",
+       "url": "https://www.sante.fr/centre-hospitalier-ch/saint-martin/centre-hospitalier-louis-constant-fleming",
+       "status": "ok (200)"
+      },
+      {
+       "label": "service-public.fr: Emergency numbers (15, 17, 18, 112)",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33954",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Santé.fr; service-public.fr F33954",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 18,
+     "dependsOn": [],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h13",
+      "move:mw_5"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hc10",
+     "title": "Read what Medicare covers outside the US",
+     "phase": "US Medicare",
+     "steps": [
+      "Open the Medicare.gov page 'Travel outside the U.S.'.",
+      "Note the main point: Medicare usually does not pay for care outside the US.",
+      "This applies only to someone who has Medicare or will soon."
+     ],
+     "links": [
+      {
+       "label": "Medicare.gov: Travel outside the US",
+       "url": "https://www.medicare.gov/coverage/travel-outside-the-u.s.",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Medicare.gov",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ],
+      "usMedicare": true
+     },
+     "order": 19,
+     "dependsOn": [],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h17",
+      "cl:c5"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hc11",
+     "title": "Decide: keep or drop Medicare Part B",
+     "phase": "US Medicare",
+     "steps": [
+      "Part A is usually free, so most people keep it.",
+      "Part B has a monthly premium even if you live abroad.",
+      "If you drop Part B and sign up again later, you may pay a lifelong penalty and can only re-enroll in set periods.",
+      "Read the penalty page, then decide. Write the decision and date in notes."
+     ],
+     "links": [
+      {
+       "label": "Medicare.gov: Avoid late enrollment penalties",
+       "url": "https://www.medicare.gov/basics/costs/medicare-costs/avoid-penalties",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Medicare.gov: When you can sign up",
+       "url": "https://www.medicare.gov/basics/get-started-with-medicare/sign-up/when-can-i-sign-up-for-medicare",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Medicare.gov: late enrollment penalties; sign-up periods",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ],
+      "usMedicare": true
+     },
+     "order": 20,
+     "dependsOn": [
+      "hc10"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": "Ask SSA or Medicare your exact penalty and re-enrollment dates before you cancel anything.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "hi:h17",
+      "cl:c5"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hc12",
+     "title": "Check any Medicare Advantage, Part D or Medigap plan",
+     "phase": "US Medicare",
+     "steps": [
+      "List any extra Medicare plan you pay for.",
+      "Call each plan and ask what happens when you move out of the US.",
+      "Most of these plans need a US service area. Write the answer in notes."
+     ],
+     "links": [
+      {
+       "label": "Medicare.gov: Travel outside the US",
+       "url": "https://www.medicare.gov/coverage/travel-outside-the-u.s.",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Medicare.gov; named source: each plan's member services",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ],
+      "usMedicare": true
+     },
+     "order": 21,
+     "dependsOn": [
+      "hc10"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": "Each plan's own rules for members who move abroad.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "banking",
+   "title": "Banking",
+   "intro": "Keep your home bank working from abroad, then open a French euro account once you have an address. US citizens: banks will ask for a US tax form (FATCA), and you report foreign accounts to the US each year.",
+   "appSection": "banking",
+   "appTrackerKey": "sxm-bank-docs2",
+   "saintMartinDiffers": "Saint-Martin uses the euro and SEPA transfers like mainland France. If a bank refuses you, the 'right to an account' goes through IEDOM (its Guadeloupe office covers Saint-Martin), not the Banque de France.",
+   "items": [
+    {
+     "id": "b14",
+     "title": "Ask your home bank if you can keep the account while living abroad",
+     "phase": "Home-country side",
+     "steps": [
+      "Call your main bank at home.",
+      "Ask: 'Can I keep my checking account if I live in French Saint-Martin?'",
+      "Ask: 'Can I use a foreign address, or do you need a home-country address?'",
+      "Write the answer and the agent's name in notes."
+     ],
+     "links": [],
+     "source": "Named source: your home bank",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 1,
+     "dependsOn": [],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": "Some banks (many in the US) close or limit accounts with a foreign address. Get the answer in writing if you can.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b14",
+      "bank:b1",
+      "move:m60_3"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "b1",
+     "title": "Turn on international use for your home-country cards",
+     "phase": "Home-country side",
+     "steps": [
+      "Open your bank app.",
+      "Find the travel or international settings.",
+      "Turn on foreign use for each card.",
+      "Note any card that does not work abroad."
+     ],
+     "links": [],
+     "source": "Named source: your home bank",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 2,
+     "dependsOn": [
+      "b14"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b1",
+      "cl:e1"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "b2",
+     "title": "Check which card has no foreign transaction fee",
+     "phase": "Home-country side",
+     "steps": [
+      "Look at each card's fee list.",
+      "Find 'foreign transaction fee' and 'ATM fee'.",
+      "Pick one card with no foreign fee for daily use."
+     ],
+     "links": [],
+     "source": "Named source: your card issuer's fee list",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 3,
+     "dependsOn": [],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b2"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "b3",
+     "title": "Open a multi-currency account and send a small test",
+     "phase": "Home-country side",
+     "steps": [
+      "Open an account with a multi-currency service (for example Wise).",
+      "Send a small amount in euros to yourself.",
+      "Check how long it took and what it cost."
+     ],
+     "links": [
+      {
+       "label": "Wise (multi-currency account)",
+       "url": "https://wise.com/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Named source: the provider",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 4,
+     "dependsOn": [],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b3",
+      "cl:e1"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "b4",
+     "title": "Make sure bank sign-in does not depend only on your home-country SIM",
+     "phase": "Home-country side",
+     "steps": [
+      "Set up an authenticator app where the bank allows it.",
+      "Save the backup codes in a safe place (not in this app).",
+      "Test one sign-in with your phone on Wi-Fi only."
+     ],
+     "links": [],
+     "source": "Named source: your bank's security settings",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 5,
+     "dependsOn": [],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b4",
+      "phone:ph3"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "b5",
+     "title": "Make a shortlist of 2 or 3 banks in Saint-Martin",
+     "phase": "French side",
+     "steps": [
+      "List banks with a branch in Marigot or nearby.",
+      "Call or visit each one.",
+      "Ask: 'What do you need to open an account for a [your nationality] citizen?'",
+      "Ask if you need an appointment."
+     ],
+     "links": [],
+     "source": "Named source: each bank's branch",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 6,
+     "dependsOn": [
+      "ld7"
+     ],
+     "estTime": "2 hours",
+     "cost": null,
+     "verify": "Which banks have branches open to new personal customers in Saint-Martin today.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b5",
+      "cl:e2"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "bk01",
+     "title": "US citizens: fill in the US tax form the bank will ask for (W-9)",
+     "phase": "French side",
+     "steps": [
+      "French banks must report US customers to the IRS (FATCA).",
+      "They will ask each of you for an IRS Form W-9 or their own self-certification form.",
+      "Fill it in at the bank. Your tax number goes on that form only, never in this app."
+     ],
+     "links": [
+      {
+       "label": "IRS: About Form W-9",
+       "url": "https://www.irs.gov/forms-pubs/about-form-w-9",
+       "status": "ok (200)"
+      },
+      {
+       "label": "IRS: Summary of FATCA reporting",
+       "url": "https://www.irs.gov/businesses/corporations/summary-of-fatca-reporting-for-us-taxpayers",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "IRS: Form W-9; FATCA summary",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ]
+     },
+     "order": 7,
+     "dependsOn": [
+      "b5"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b6"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "b6",
+     "title": "Put the bank document folder together",
+     "phase": "French side",
+     "steps": [
+      "Passport.",
+      "Visa or residence card.",
+      "Proof of address in Saint-Martin, less than 3 months old.",
+      "Proof of income (for example a pension or benefit letter).",
+      "US citizens only: the W-9 or the bank's own US self-certification form.",
+      "Any other form the bank lists."
+     ],
+     "links": [],
+     "source": "Named source: the bank's own list",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 8,
+     "dependsOn": [
+      "b5"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b6"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "b8",
+     "title": "Open the French account and get your RIB",
+     "phase": "French side",
+     "steps": [
+      "Go to the appointment with the folder.",
+      "Sign the account agreement.",
+      "Ask for your RIB (bank details sheet with your IBAN).",
+      "Save the RIB as a PDF. Many offices will ask for it."
+     ],
+     "links": [],
+     "source": "Named source: the bank",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 9,
+     "dependsOn": [
+      "b6",
+      "bk01"
+     ],
+     "estTime": "1 to 2 hours",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b8",
+      "move:mf_b"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "b15",
+     "title": "If a bank says no: use your 'right to an account'",
+     "phase": "French side",
+     "steps": [
+      "Ask the bank for a written refusal (attestation de refus).",
+      "If they do not answer within 15 days of a registered-letter request, that counts as a refusal.",
+      "Fill in the IEDOM 'droit au compte' form.",
+      "Send it online or hand it in at IEDOM with your ID and a proof of address less than 3 months old.",
+      "IEDOM names a bank that must open a basic account for you."
+     ],
+     "links": [
+      {
+       "label": "IEDOM: Your right to a bank account",
+       "url": "https://www.iedom.fr/Votre-droit-au-compte-bancaire-avec-l-IEDOM",
+       "status": "ok (200)"
+      },
+      {
+       "label": "IEDOM Guadeloupe office (also covers Saint-Martin)",
+       "url": "https://www.iedom.fr/Guadeloupe",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "IEDOM: droit au compte",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 10,
+     "dependsOn": [
+      "b5"
+     ],
+     "estTime": "2 to 3 weeks",
+     "cost": "Free",
+     "verify": null,
+     "saintMartinDiff": "In mainland France this goes through the Banque de France. In Saint-Martin it goes through IEDOM.",
+     "mapsTo": [
+      "bank:b15"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "b7",
+     "title": "Agree with the landlord how you will pay rent",
+     "phase": "French side",
+     "steps": [
+      "Ask if they want a SEPA transfer or a direct debit.",
+      "Get their IBAN in writing.",
+      "Set up the first payment from your French account."
+     ],
+     "links": [],
+     "source": "Named source: your landlord or agency",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 11,
+     "dependsOn": [
+      "b8"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b7"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "b9",
+     "title": "Test the new card",
+     "phase": "French side",
+     "steps": [
+      "Take out a small amount at an ATM.",
+      "Pay for one small purchase in a shop.",
+      "Check both show in the bank app."
+     ],
+     "links": [],
+     "source": "Named source: your bank",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 12,
+     "dependsOn": [
+      "b8"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b9",
+      "cl:e4"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "bk02",
+     "title": "Learn the FBAR rule for foreign accounts",
+     "phase": "US citizens: reporting to the US each year",
+     "steps": [
+      "If all your foreign accounts together go over $10,000 at any time in the year, you must file an FBAR.",
+      "It is filed online with FinCEN, not with your tax return.",
+      "Put a yearly reminder for April 15 (there is an automatic extension to October 15)."
+     ],
+     "links": [
+      {
+       "label": "IRS: FBAR (foreign bank account report)",
+       "url": "https://www.irs.gov/businesses/small-businesses-self-employed/report-of-foreign-bank-and-financial-accounts-fbar",
+       "status": "ok (200)"
+      },
+      {
+       "label": "FinCEN BSA E-Filing (where the FBAR is filed)",
+       "url": "https://bsaefiling.fincen.gov/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "IRS: FBAR page",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ]
+     },
+     "order": 13,
+     "dependsOn": [
+      "b8"
+     ],
+     "estTime": "15 min to learn; 30 min a year to file",
+     "cost": null,
+     "verify": "Confirm the current deadline on the IRS FBAR page each year.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b11",
+      "tax:tx3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "bk03",
+     "title": "Check if you must also file Form 8938",
+     "phase": "US citizens: reporting to the US each year",
+     "steps": [
+      "Form 8938 is filed with your US tax return.",
+      "The amounts that trigger it are higher for people living abroad.",
+      "Open the IRS page and check the table for 'taxpayers living abroad'.",
+      "Ask your tax preparer to confirm."
+     ],
+     "links": [
+      {
+       "label": "IRS: About Form 8938 (foreign assets)",
+       "url": "https://www.irs.gov/forms-pubs/about-form-8938",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "IRS: About Form 8938",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ]
+     },
+     "order": 14,
+     "dependsOn": [
+      "b8"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b11",
+      "tax:tx3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "civil-records",
+   "title": "Identity and civil records",
+   "intro": "Order fresh certified birth (and, if married, marriage) certificates, get each one an apostille from the place that issued it, then have them translated into French. Check your passports first.",
+   "appSection": "legal",
+   "appTrackerKey": "sxm-legal-docs2",
+   "saintMartinDiffers": "Sworn translators for Saint-Martin are listed by the Court of Appeal of Basse-Terre (Guadeloupe), not a mainland court.",
+   "items": [
+    {
+     "id": "ld1",
+     "title": "Check both passports",
+     "phase": "Passports",
+     "steps": [
+      "Find the expiry date on each passport.",
+      "It must be valid at least 3 months after your visa ends.",
+      "It must have 2 blank pages and be less than 10 years old.",
+      "If not, renew it before you apply for the visa."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Visas for French overseas territories",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10610",
+       "status": "ok (200)"
+      },
+      {
+       "label": "State Dept: Renew a passport",
+       "url": "https://travel.state.gov/content/travel/en/passports/have-passport/renew.html",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "service-public.fr F10610; State Dept passports",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 1,
+     "dependsOn": [],
+     "estTime": "10 min",
+     "cost": "Renewal: see State Dept fee list",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld1"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "cr01",
+     "title": "Find the office that issues each birth and marriage record",
+     "phase": "Certificates",
+     "steps": [
+      "List each adult's place of birth and, if married, the place of marriage.",
+      "US records: open the CDC page 'Where to Write for Vital Records' and click each state.",
+      "Other countries: use that country's civil registry.",
+      "Write down each office in notes."
+     ],
+     "links": [
+      {
+       "label": "CDC: Where to Write for Vital Records (by state)",
+       "url": "https://www.cdc.gov/nchs/w2w/index.htm",
+       "status": "blocked to curl (403); page read with WebFetch this session"
+      }
+     ],
+     "source": "CDC: Where to Write for Vital Records (US records); the issuing civil registry",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 2,
+     "dependsOn": [],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "cr02",
+     "title": "Ask how recent the certificates must be",
+     "phase": "Certificates",
+     "steps": [
+      "French offices often want civil records issued recently.",
+      "Ask the consulate (for the visa) and the préfecture (for the residence card) how recent they must be.",
+      "Write the answer in notes so you order at the right time."
+     ],
+     "links": [
+      {
+       "label": "Embassy and consulates of France in the US",
+       "url": "https://us.diplomatie.gouv.fr/fr",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Préfecture: Opening hours and contacts",
+       "url": "https://www.saint-barth-saint-martin.gouv.fr/Outils/Horaires-et-coordonnees",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Named source: the French consulate and the préfecture",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 3,
+     "dependsOn": [],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": "Whether a 3-month or 6-month limit applies to foreign certificates for the visa and for the préfecture.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld17",
+     "title": "Order a certified birth certificate (each adult)",
+     "phase": "Certificates",
+     "steps": [
+      "Go to the birth-record office you found for this person.",
+      "Order a certified copy (full or long form if offered).",
+      "Ask for 2 copies: one for France, one spare.",
+      "Write the order date in notes. Repeat for each adult."
+     ],
+     "links": [
+      {
+       "label": "CDC: Where to Write for Vital Records (by state)",
+       "url": "https://www.cdc.gov/nchs/w2w/index.htm",
+       "status": "blocked to curl (403); page read with WebFetch this session"
+      }
+     ],
+     "source": "CDC: Where to Write for Vital Records (US); the issuing registry",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 4,
+     "dependsOn": [
+      "cr01",
+      "cr02"
+     ],
+     "estTime": "20 min to order; 1 to 6 weeks to arrive",
+     "cost": "Varies by issuing office",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld17",
+      "cl:b2",
+      "move:m90_4"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld18",
+     "title": "Order a certified marriage certificate (if married)",
+     "phase": "Certificates",
+     "steps": [
+      "Go to the office where the marriage was recorded.",
+      "Order 2 certified copies.",
+      "Write the order date in notes."
+     ],
+     "links": [
+      {
+       "label": "CDC: Where to Write for Vital Records (by state)",
+       "url": "https://www.cdc.gov/nchs/w2w/index.htm",
+       "status": "blocked to curl (403); page read with WebFetch this session"
+      }
+     ],
+     "source": "CDC: Where to Write for Vital Records (US); the issuing registry",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "married": true
+     },
+     "order": 5,
+     "dependsOn": [
+      "cr01",
+      "cr02"
+     ],
+     "estTime": "20 min to order",
+     "cost": "Varies by issuing office",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld18",
+      "cl:b2",
+      "move:m90_4"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "cr03",
+     "title": "Find the apostille office for each record",
+     "phase": "Apostilles",
+     "steps": [
+      "An apostille must come from the same place that issued the record.",
+      "Open the Hague Conference list of apostille offices for the issuing country.",
+      "US records: it is usually the Secretary of State of the issuing state.",
+      "Write down each office's request form and fee."
+     ],
+     "links": [
+      {
+       "label": "Hague Conference: Apostille section",
+       "url": "https://www.hcch.net/en/instruments/conventions/specialised-sections/apostille",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Hague Conference: US apostille authorities by state",
+       "url": "https://www.hcch.net/en/instruments/conventions/authorities1/?cid=41",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Hague Conference (HCCH): apostille authorities",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 6,
+     "dependsOn": [],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": "If a record comes from a country that is not in the Apostille Convention, it needs legalisation instead. See service-public.fr F1402.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld19",
+     "title": "Get an apostille on each birth certificate (each adult)",
+     "phase": "Apostilles",
+     "steps": [
+      "Fill in the apostille office's request form.",
+      "Write 'France' as the country where it will be used.",
+      "Send it with the certified certificate and the fee.",
+      "Track the envelope. Repeat for each adult."
+     ],
+     "links": [
+      {
+       "label": "Hague Conference: Apostille section",
+       "url": "https://www.hcch.net/en/instruments/conventions/specialised-sections/apostille",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Hague Conference: US apostille authorities by state",
+       "url": "https://www.hcch.net/en/instruments/conventions/authorities1/?cid=41",
+       "status": "ok (200)"
+      },
+      {
+       "label": "service-public.fr: Legalisation and apostille of foreign documents",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1402",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "HCCH; the issuing apostille office",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 7,
+     "dependsOn": [
+      "ld17",
+      "cr03"
+     ],
+     "estTime": "1 to 4 weeks",
+     "cost": "Varies by office",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld19",
+      "cl:b3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld19m",
+     "title": "Get an apostille on the marriage certificate (if married)",
+     "phase": "Apostilles",
+     "steps": [
+      "Use the apostille office for the place where you married.",
+      "Write 'France' as the country of use.",
+      "Send it with the certified certificate and the fee."
+     ],
+     "links": [
+      {
+       "label": "Hague Conference: Apostille section",
+       "url": "https://www.hcch.net/en/instruments/conventions/specialised-sections/apostille",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Hague Conference: US apostille authorities by state",
+       "url": "https://www.hcch.net/en/instruments/conventions/authorities1/?cid=41",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "HCCH; the issuing apostille office",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "married": true
+     },
+     "order": 8,
+     "dependsOn": [
+      "ld18",
+      "cr03"
+     ],
+     "estTime": "1 to 4 weeks",
+     "cost": "Varies by office",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld19",
+      "cl:b3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld20",
+     "title": "Store the apostilled originals safely",
+     "phase": "Apostilles",
+     "steps": [
+      "Keep each apostille attached to its certificate. Do not remove it.",
+      "Scan both pages of each one.",
+      "Store the originals flat in a folder in your carry-on."
+     ],
+     "links": [],
+     "source": "Named source: your own records",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 9,
+     "dependsOn": [
+      "ld19",
+      "ld19m"
+     ],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld20"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld24",
+     "title": "Ask which documents need a sworn translation",
+     "phase": "Translations",
+     "steps": [
+      "Ask the consulate (visa) and the préfecture (residence card) which documents must be in French.",
+      "Write the list in notes."
+     ],
+     "links": [
+      {
+       "label": "Embassy and consulates of France in the US",
+       "url": "https://us.diplomatie.gouv.fr/fr",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Préfecture: Opening hours and contacts",
+       "url": "https://www.saint-barth-saint-martin.gouv.fr/Outils/Horaires-et-coordonnees",
+       "status": "ok (200)"
+      },
+      {
+       "label": "service-public.fr: Legalisation and apostille of foreign documents",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1402",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Named source: the consulate and the préfecture; service-public.fr F1402",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 10,
+     "dependsOn": [],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": "Which documents need a sworn translation for the visa, and which for the préfecture and the CGSS.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld24",
+      "cl:b4"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "cr04",
+     "title": "Pick a sworn translator (traducteur agréé)",
+     "phase": "Translations",
+     "steps": [
+      "Open the list of experts of the Basse-Terre Court of Appeal.",
+      "Look in the English section for a translator based in Saint-Martin.",
+      "Or ask the French consulate in your country for its list.",
+      "Ask 2 translators for a price per page and a delivery date."
+     ],
+     "links": [
+      {
+       "label": "Basse-Terre Court of Appeal: approved experts and translators (covers Saint-Martin)",
+       "url": "https://www.guadeloupe.gouv.fr/Publications/Experts/Liste-des-experts-agrees-par-la-Cour-d-Appel-de-Basse-Terre",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Embassy and consulates of France in the US",
+       "url": "https://us.diplomatie.gouv.fr/fr",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Basse-Terre Court of Appeal expert list",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 11,
+     "dependsOn": [
+      "ld24"
+     ],
+     "estTime": "1 hour",
+     "cost": "Per page; ask for a quote",
+     "verify": null,
+     "saintMartinDiff": "Saint-Martin falls under the Basse-Terre Court of Appeal in Guadeloupe.",
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "cr05",
+     "title": "Send the documents for translation",
+     "phase": "Translations",
+     "steps": [
+      "Send scans of the apostilled certificates, including the apostille page.",
+      "Ask for the translation to cover the apostille too.",
+      "Collect the signed and stamped originals."
+     ],
+     "links": [
+      {
+       "label": "Basse-Terre Court of Appeal: approved experts and translators (covers Saint-Martin)",
+       "url": "https://www.guadeloupe.gouv.fr/Publications/Experts/Liste-des-experts-agrees-par-la-Cour-d-Appel-de-Basse-Terre",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Named source: the translator",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 12,
+     "dependsOn": [
+      "cr04",
+      "ld20"
+     ],
+     "estTime": "1 to 2 weeks",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld24"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld21",
+     "title": "Ask if you need a criminal-record check",
+     "phase": "Other documents",
+     "steps": [
+      "Ask the consulate if a criminal-record document is needed for your visa type.",
+      "If yes, request one for each adult from your home country (US: FBI Identity History Summary).",
+      "US citizens: this federal document gets its apostille from the US State Department, not a state office."
+     ],
+     "links": [
+      {
+       "label": "FBI: Identity History Summary (background check)",
+       "url": "https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/identity-history-summary-checks",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      },
+      {
+       "label": "State Dept: Authenticate a document (federal apostilles)",
+       "url": "https://travel.state.gov/content/travel/en/records-and-authentications/authenticate-your-document.html",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "FBI; State Dept Office of Authentications",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 13,
+     "dependsOn": [],
+     "estTime": "20 min to ask",
+     "cost": null,
+     "verify": "Whether a visiteur visa for Saint-Martin requires it. It was not on the official lists checked.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld21"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld13",
+     "title": "Scan everything and pack a paper set",
+     "phase": "Other documents",
+     "steps": [
+      "Scan passports, certificates, apostilles, translations, insurance and visa papers.",
+      "Save them in one cloud folder everyone in the household can open.",
+      "Put the paper originals in one folder in your carry-on. Never in checked luggage."
+     ],
+     "links": [],
+     "source": "Named source: your own records",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 14,
+     "dependsOn": [],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld13",
+      "move:m90_7",
+      "move:m30_4",
+      "cl:f5"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "income-tax",
+   "title": "Income, Social Security and taxes",
+   "intro": "Make sure any pension or benefit from home keeps paying you abroad, and know which tax office you answer to. Saint-Martin has its own income tax, separate from mainland France, and tax treaties signed by France may not cover it (for US citizens, the US-France treaty).",
+   "appSection": "tax",
+   "appTrackerKey": "sxm-tax-docs2",
+   "saintMartinDiffers": "Saint-Martin sets and collects its own income tax. Returns go to the Centre des finances publiques in Concordia, due May 31. The '5-year rule' is aimed at people coming from mainland France or a French DOM. The US-France treaty defines France as the European and overseas departments, and Saint-Martin stopped being part of a department in 2007.",
+   "items": [
+    {
+     "id": "it01",
+     "title": "Run the SSA Payments Abroad Screening Tool",
+     "phase": "US Social Security",
+     "steps": [
+      "Open the SSA Payments Abroad Screening Tool.",
+      "Answer the questions. Choose France if Saint-Martin is not listed.",
+      "Note whether your payments continue with no limit.",
+      "Save a screenshot of the result."
+     ],
+     "links": [
+      {
+       "label": "SSA: Payments Abroad Screening Tool",
+       "url": "https://www.ssa.gov/international/payments_outsideUS.html",
+       "status": "blocked to curl (403); page read with WebFetch this session"
+      },
+      {
+       "label": "SSA: Your Payments While You Are Outside the United States (PDF)",
+       "url": "https://www.ssa.gov/pubs/EN-05-10137.pdf",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "SSA: Payments Abroad Screening Tool",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ],
+      "incomeSources": [
+       "US Social Security"
+      ]
+     },
+     "order": 1,
+     "dependsOn": [],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": "SSA does not list Saint-Martin by name. Ask SSA to confirm it treats French Saint-Martin like France.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "it02",
+     "title": "Download your Social Security benefit letter",
+     "phase": "US Social Security",
+     "steps": [
+      "Log in to my Social Security.",
+      "Download the 'benefit verification letter'.",
+      "Save it. You need it for the visa, the bank and landlords."
+     ],
+     "links": [
+      {
+       "label": "SSA: my Social Security account",
+       "url": "https://www.ssa.gov/myaccount/",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "SSA: my Social Security",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ],
+      "incomeSources": [
+       "US Social Security"
+      ]
+     },
+     "order": 2,
+     "dependsOn": [],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld5"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "mv_ssa",
+     "title": "Tell SSA you are moving abroad and give the new address",
+     "phase": "US Social Security",
+     "steps": [
+      "Before you leave, call SSA or visit an office and tell them your move date.",
+      "After you arrive, give them your Saint-Martin address.",
+      "The islands around Saint-Martin are served by the Federal Benefits Unit in Santo Domingo. SSA staff also visit St. Martin from time to time.",
+      "Write the date and the person you spoke with in notes."
+     ],
+     "links": [
+      {
+       "label": "SSA: Contacts for services outside the US",
+       "url": "https://www.ssa.gov/foreign/foreign.htm",
+       "status": "blocked to curl (403); page found in search index this session"
+      },
+      {
+       "label": "State Dept 7 FAM 537: which Federal Benefits Unit serves each country",
+       "url": "https://fam.state.gov/fam/07fam/07fam0530.html",
+       "status": "ok (200)"
+      },
+      {
+       "label": "US Embassy Bridgetown: SSA/Federal Benefits visits in St. Martin",
+       "url": "https://bb.usembassy.gov/message-to-u-s-citizens-social-security-and-federal-benefits-consultations-in-anguilla-and-st-martin/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "SSA: contacts outside the US; State Dept 7 FAM 537",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ],
+      "incomeSources": [
+       "US Social Security"
+      ]
+     },
+     "order": 3,
+     "dependsOn": [
+      "it01"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": "Which Federal Benefits Unit serves French Saint-Martin. The State Dept table lists Guadeloupe, Saint-Barthélemy and Sint Maarten under Santo Domingo, but not French Saint-Martin by name. The app's current note says FBU Paris.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "move:mv_ssa",
+      "legal:ld37"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "b16",
+     "title": "Decide where SSA pays you: US account or euro account",
+     "phase": "US Social Security",
+     "steps": [
+      "Option 1: keep payments going to your US bank (simplest).",
+      "Option 2: send them to your French account in euros with form SSA-1199-FR.",
+      "For option 2, the French bank fills in its part of the form. Then you send it to SSA.",
+      "Write your choice in notes."
+     ],
+     "links": [
+      {
+       "label": "SSA: International direct deposit country list",
+       "url": "https://www.ssa.gov/international/countrylist6.htm",
+       "status": "blocked to curl (403); page read with WebFetch this session"
+      },
+      {
+       "label": "SSA: SSA-1199 direct deposit forms (pick France)",
+       "url": "https://www.ssa.gov/forms/ssa-1199.html",
+       "status": "blocked to curl (403); page found in search index this session"
+      },
+      {
+       "label": "SSA-1199-FR form (PDF)",
+       "url": "https://www.ssa.gov/forms/ssa-1199-fr.pdf",
+       "status": "blocked to curl (403); page found in search index this session"
+      }
+     ],
+     "source": "SSA: International direct deposit list; SSA-1199-FR",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ],
+      "incomeSources": [
+       "US Social Security"
+      ]
+     },
+     "order": 4,
+     "dependsOn": [
+      "b8",
+      "mv_ssa"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": "France is on SSA's direct deposit list but Saint-Martin is not named. Ask SSA if an IBAN from a Saint-Martin branch is accepted.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "bank:b16",
+      "cl:e3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "it03",
+     "title": "Answer SSA's mail questionnaires on time",
+     "phase": "US Social Security",
+     "steps": [
+      "SSA mails questionnaires to people abroad from time to time.",
+      "Answer and send each one back quickly. Payments can stop if you do not.",
+      "Make sure your mailing address works (see Mail)."
+     ],
+     "links": [
+      {
+       "label": "SSA: Your Payments While You Are Outside the United States (PDF)",
+       "url": "https://www.ssa.gov/pubs/EN-05-10137.pdf",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "SSA: Your Payments While You Are Outside the United States",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ],
+      "incomeSources": [
+       "US Social Security"
+      ]
+     },
+     "order": 5,
+     "dependsOn": [
+      "mv_ssa"
+     ],
+     "estTime": "15 min each time",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "tx1",
+     "title": "Find a tax adviser who knows your home country's expat rules and Saint-Martin",
+     "phase": "Taxes",
+     "steps": [
+      "Look for an adviser who works with people from your country living abroad (US: a CPA or Enrolled Agent).",
+      "Ask if they know Saint-Martin's own tax system.",
+      "Book a first call."
+     ],
+     "links": [],
+     "source": "Named source: the preparer",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 6,
+     "dependsOn": [],
+     "estTime": "1 to 2 hours",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "tax:tx1",
+      "cl:e5"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "tx2",
+     "title": "List your income types for the call",
+     "phase": "Taxes",
+     "steps": [
+      "State pension or social security benefits.",
+      "Any private pensions or retirement account withdrawals (US: IRA, 401(k)).",
+      "Any job or freelance income.",
+      "Interest and dividends.",
+      "Do not write account numbers here."
+     ],
+     "links": [],
+     "source": "Named source: your own records",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 7,
+     "dependsOn": [
+      "tx1"
+     ],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "tax:tx2"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "it04",
+     "title": "Read Saint-Martin's tax pages",
+     "phase": "Taxes",
+     "steps": [
+      "Open the Collectivité's 'Fiscalité pour les particuliers' page.",
+      "Open 'Résidence fiscale à Saint-Martin - La règle des 5 ans'.",
+      "Open 'Déclaration de revenus (IR)'. Returns are due May 31, payment by September 30."
+     ],
+     "links": [
+      {
+       "label": "Collectivité: Taxes for individuals",
+       "url": "https://www.com-saint-martin.fr/thematiques/impots-et-fiscalite/fiscalite-pour-les-particuliers",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Collectivité: Tax residence and the 5-year rule",
+       "url": "https://www.com-saint-martin.fr/thematiques/impots-et-fiscalite/fiscalite-pour-les-particuliers/residence-fiscale-a-saint-martin---la-regle-des-5-ans",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Collectivité: Income tax return for residents",
+       "url": "https://www.com-saint-martin.fr/thematiques/impots-et-fiscalite/fiscalite-pour-les-particuliers/declaration-de-revenus-ir---residents-et-assimile-residents-de-saint-martin",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité de Saint-Martin: tax pages",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 8,
+     "dependsOn": [],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": "Saint-Martin's income tax is its own. Mainland impots.gouv.fr rules and dates do not apply.",
+     "mapsTo": [
+      "tax:tx4"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "it05",
+     "title": "Ask the Saint-Martin tax office when you become tax residents",
+     "phase": "Taxes",
+     "steps": [
+      "Write to the Centre des finances publiques de Saint-Martin, 16 rue Jean-Jacques Fayel, Concordia.",
+      "Email: cfip.sxm.servicedesparticuliers@dgfip.finances.gouv.fr. Phone: 0590 29 25 71.",
+      "Ask: 'We are [nationality] citizens arriving from [country]. From what date are we tax residents of Saint-Martin, and which return do we file?'",
+      "Ask: 'How is our [pension or benefit] taxed here?'",
+      "Save their answer."
+     ],
+     "links": [
+      {
+       "label": "Collectivité: Tax residence and the 5-year rule",
+       "url": "https://www.com-saint-martin.fr/thematiques/impots-et-fiscalite/fiscalite-pour-les-particuliers/residence-fiscale-a-saint-martin---la-regle-des-5-ans",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité de Saint-Martin: 5-year rule page (contacts)",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 9,
+     "dependsOn": [
+      "it04"
+     ],
+     "estTime": "20 min to write",
+     "cost": null,
+     "verify": "How the 5-year rule applies to people arriving from the US, and how Saint-Martin taxes your pension or benefit income.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "tax:tx4"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "it06",
+     "title": "Ask your preparer if the US-France treaty covers Saint-Martin",
+     "phase": "Taxes",
+     "steps": [
+      "The treaty defines France as the European and overseas departments.",
+      "Saint-Martin has been a separate collectivity, not a department, since 2007.",
+      "Ask your preparer what that means for your Social Security and other income.",
+      "Write the answer in notes."
+     ],
+     "links": [
+      {
+       "label": "IRS: US-France tax treaty documents",
+       "url": "https://www.irs.gov/businesses/international-businesses/france-tax-treaty-documents",
+       "status": "ok (200)"
+      },
+      {
+       "label": "IRS: US-France tax treaty text (PDF)",
+       "url": "https://www.irs.gov/pub/irs-trty/france.pdf",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "IRS: US-France treaty text (Article 3 definition; Article 18 pensions)",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ]
+     },
+     "order": 10,
+     "dependsOn": [
+      "tx1"
+     ],
+     "estTime": "Part of the call",
+     "cost": null,
+     "verify": "Whether the treaty applies to Saint-Martin. If it does not, US Social Security might be taxed in both places, and the US foreign tax credit becomes important.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "tax:tx4"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "it07",
+     "title": "Learn about the US foreign tax credit",
+     "phase": "Taxes",
+     "steps": [
+      "If Saint-Martin taxes your income, you may be able to subtract that from your US tax.",
+      "This uses IRS Form 1116.",
+      "Ask your preparer if it applies to you."
+     ],
+     "links": [
+      {
+       "label": "IRS: Foreign tax credit",
+       "url": "https://www.irs.gov/individuals/international-taxpayers/foreign-tax-credit",
+       "status": "ok (200)"
+      },
+      {
+       "label": "IRS: About Form 1116",
+       "url": "https://www.irs.gov/forms-pubs/about-form-1116",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "IRS: Foreign tax credit; Form 1116",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ],
+      "note": "when Saint-Martin also taxes the income"
+     },
+     "order": 11,
+     "dependsOn": [
+      "it05",
+      "it06"
+     ],
+     "estTime": "Part of the call",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "tx6",
+     "title": "Put the US filing dates in your calendar",
+     "phase": "Taxes",
+     "steps": [
+      "You still file a US return every year.",
+      "Living abroad gives an automatic 2-month extension to June 15 to file.",
+      "Any tax owed is still due April 15, or interest is charged.",
+      "Add reminders for April 15 and June 15."
+     ],
+     "links": [
+      {
+       "label": "IRS: Automatic 2-month extension for people abroad",
+       "url": "https://www.irs.gov/individuals/international-taxpayers/us-citizens-and-resident-aliens-abroad-automatic-2-month-extension-of-time-to-file",
+       "status": "ok (200)"
+      },
+      {
+       "label": "IRS: Filing requirements for citizens abroad",
+       "url": "https://www.irs.gov/individuals/international-taxpayers/us-citizens-and-resident-aliens-abroad-filing-requirements",
+       "status": "ok (200)"
+      },
+      {
+       "label": "IRS Publication 54: Tax guide for US citizens abroad",
+       "url": "https://www.irs.gov/publications/p54",
+       "status": "ok (200)"
+      },
+      {
+       "label": "IRS Publication 915: Social Security benefits and tax",
+       "url": "https://www.irs.gov/publications/p915",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "IRS: automatic 2-month extension; Publications 54 and 915",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ]
+     },
+     "order": 12,
+     "dependsOn": [],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "tax:tx6"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "it08",
+     "title": "US citizens: ask about state tax in your last US state",
+     "phase": "Taxes",
+     "steps": [
+      "Some states keep taxing you if you still look like a resident there.",
+      "Ask your preparer what your state needs to see to treat you as moved away.",
+      "Write the steps in notes."
+     ],
+     "links": [],
+     "source": "Named source: your state's tax department and your preparer",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ]
+     },
+     "order": 13,
+     "dependsOn": [
+      "tx1"
+     ],
+     "estTime": "Part of the call",
+     "cost": null,
+     "verify": "Your state's rules on leaving the state for tax purposes.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "tx7",
+     "title": "Send the IRS your new address (Form 8822)",
+     "phase": "Taxes",
+     "steps": [
+      "Once you have a Saint-Martin address, fill in Form 8822.",
+      "Mail it to the address listed in the form's instructions.",
+      "Keep a copy."
+     ],
+     "links": [
+      {
+       "label": "IRS: About Form 8822 (change of address)",
+       "url": "https://www.irs.gov/forms-pubs/about-form-8822",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "IRS: About Form 8822",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ]
+     },
+     "order": 14,
+     "dependsOn": [
+      "ld7"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "tax:tx7",
+      "legal:ld37"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "tx5",
+     "title": "Write down the tax advice before you apply for the visa",
+     "phase": "Taxes",
+     "steps": [
+      "After the call, write the key answers in notes.",
+      "Include who said it and the date."
+     ],
+     "links": [],
+     "source": "Named source: your preparer",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 15,
+     "dependsOn": [
+      "tx1"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "tax:tx5"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "wk7",
+     "title": "If either of you works: check tax and social charges on that income",
+     "phase": "Taxes",
+     "steps": [
+      "Tell your preparer about any job, including remote work for a foreign company.",
+      "Ask how it is taxed at home and in Saint-Martin.",
+      "Ask which country's social security contributions apply (US citizens: the US-France social security agreement)."
+     ],
+     "links": [],
+     "source": "Named source: your preparer",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "worksRemotely": true
+     },
+     "order": 16,
+     "dependsOn": [
+      "tx1",
+      "ld39"
+     ],
+     "estTime": "Part of the call",
+     "cost": null,
+     "verify": "Whether the US-France social security (totalization) agreement covers Saint-Martin.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "work:wk7",
+      "work:wk3"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "legal",
+   "title": "Immigration and the préfecture",
+   "intro": "If you are not an EU/EEA/Swiss citizen, apply for a long-stay visa for Saint-Martin from your country of residence before you move. For people who will not work, this is usually the 'visiteur' visa. After you arrive, validate it online if it is a VLS-TS, then renew through the préfecture in Concordia.",
+   "appSection": "legal",
+   "appTrackerKey": "sxm-legal-docs2",
+   "saintMartinDiffers": "Saint-Martin is outside the Schengen area. The visa must name Saint-Martin (or 'DFA'). A visa for mainland France does not cover it. You land at SXM on the Dutch side, where there is no French border check. The préfecture is shared with Saint-Barthélemy and sits in Concordia, Marigot.",
+   "items": [
+    {
+     "id": "ld12",
+     "title": "Decide together: long-stay visa or short visits",
+     "phase": "A. Decide",
+     "steps": [
+      "Many nationalities, including US citizens, can visit for up to 90 days in any 180 days without a visa. Check yours in the France-Visas wizard.",
+      "To live there longer you need a long-stay visa, applied for from the country where you live, before you go.",
+      "Write your decision and the date in notes."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Visas for French overseas territories",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10610",
+       "status": "ok (200)"
+      },
+      {
+       "label": "France-Visas: Long-stay visa",
+       "url": "https://www.france-visas.gouv.fr/en/visa-de-long-sejour",
+       "status": "blocked to curl (403); page found in search index this session"
+      }
+     ],
+     "source": "service-public.fr F10610; France-Visas",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 1,
+     "dependsOn": [],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld12",
+      "cl:b1",
+      "move:m90_8"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld39",
+     "title": "Get the remote-work question answered in writing",
+     "phase": "A. Decide",
+     "steps": [
+      "The visiteur status does not allow work in France.",
+      "If anyone will work remotely for a foreign employer, ask the consulate or a French immigration lawyer how this fits.",
+      "Keep the written answer."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: 'Visiteur' residence card",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F302",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true,
+      "worksRemotely": true
+     },
+     "order": 2,
+     "dependsOn": [],
+     "estTime": "1 to 2 weeks",
+     "cost": null,
+     "verify": "How remote work for a foreign employer fits the visiteur status. Get current advice.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld39",
+      "cl:b7",
+      "work:wk4"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "im01",
+     "title": "Run the France-Visas wizard with Saint-Martin as the destination",
+     "phase": "A. Decide",
+     "steps": [
+      "Open the France-Visas visa wizard.",
+      "Pick your nationality and the country where you live.",
+      "For destination, pick Saint-Martin, not 'France'.",
+      "Pick a stay of more than 3 months and the private stay or visitor purpose.",
+      "Save the document list it gives you."
+     ],
+     "links": [
+      {
+       "label": "France-Visas: Visa wizard (pick destination Saint-Martin)",
+       "url": "https://www.france-visas.gouv.fr/en/web/france-visas/visa-wizard",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      },
+      {
+       "label": "France-Visas: Applying from the United States",
+       "url": "https://france-visas.gouv.fr/en/united-states-of-america",
+       "status": "blocked to curl (403); page found in search index this session"
+      }
+     ],
+     "source": "France-Visas",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 3,
+     "dependsOn": [
+      "ld12"
+     ],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": "Visas for Saint-Martin are separate from mainland France visas.",
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld5",
+     "title": "Prepare proof of income",
+     "phase": "B. Build the file",
+     "steps": [
+      "Use your pension or benefit letter (US retirees: the SSA benefit verification letter).",
+      "Add 3 recent bank statements.",
+      "The visiteur minimum is about €1,478 net a month for one person."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: 'Visiteur' residence card",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
+       "status": "ok (200)"
+      },
+      {
+       "label": "SSA: my Social Security account",
+       "url": "https://www.ssa.gov/myaccount/",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "service-public.fr F302",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 4,
+     "dependsOn": [
+      "it02"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": "How the minimum is counted for a couple, and whether gross or net pension is used.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld5"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld6",
+     "title": "Add the health insurance certificate",
+     "phase": "B. Build the file",
+     "steps": [
+      "Use the certificate from the Healthcare checklist.",
+      "Check the dates cover the whole visa period."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: 'Visiteur' residence card",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F302",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 5,
+     "dependsOn": [
+      "h8"
+     ],
+     "estTime": "5 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld6"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld7",
+     "title": "Add proof of where you will live",
+     "phase": "B. Build the file",
+     "steps": [
+      "Use a signed lease, or a letter from the person hosting you with their ID and a bill.",
+      "The address must be on the French side."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: 'Visiteur' residence card",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F302",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 6,
+     "dependsOn": [
+      "l13"
+     ],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld7"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld25",
+     "title": "Handwrite and sign the 'no work in France' statement (each adult)",
+     "phase": "B. Build the file",
+     "steps": [
+      "Write by hand that you will not work in France (attestation sur l'honneur de ne pas travailler en France).",
+      "Add your full name, the date and your signature.",
+      "Each adult writes their own."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: 'Visiteur' residence card",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F302",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 7,
+     "dependsOn": [],
+     "estTime": "5 min",
+     "cost": null,
+     "verify": "The exact wording the consulate expects.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld25"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld27",
+     "title": "Fill in the France-Visas online form (each adult)",
+     "phase": "C. Apply before you leave",
+     "steps": [
+      "Create an account on France-Visas.",
+      "Start a long-stay application with Saint-Martin as the destination.",
+      "Fill it in and submit it. Each adult needs their own application.",
+      "Print the form and the receipt."
+     ],
+     "links": [
+      {
+       "label": "France-Visas: Long-stay visa",
+       "url": "https://www.france-visas.gouv.fr/en/visa-de-long-sejour",
+       "status": "blocked to curl (403); page found in search index this session"
+      },
+      {
+       "label": "France-Visas: Visa wizard (pick destination Saint-Martin)",
+       "url": "https://www.france-visas.gouv.fr/en/web/france-visas/visa-wizard",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "France-Visas",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 8,
+     "dependsOn": [
+      "im01"
+     ],
+     "estTime": "1 hour each",
+     "cost": "Visa fee: see France-Visas",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld27",
+      "cl:b5"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld28",
+     "title": "Book the visa centre appointment",
+     "phase": "C. Apply before you leave",
+     "steps": [
+      "France-Visas sends you on to the visa centre for your country (in the US: TLScontact).",
+      "Pick the centre for where you live.",
+      "Book at least a month before you leave. You cannot apply more than 3 months ahead.",
+      "Bring every original and a copy of each."
+     ],
+     "links": [
+      {
+       "label": "TLScontact: France visa centres in the US",
+       "url": "https://visas-fr.tlscontact.com/en-us/country/us",
+       "status": "blocked to curl (403); page found in search index this session"
+      },
+      {
+       "label": "France-Visas: Applying from the United States",
+       "url": "https://france-visas.gouv.fr/en/united-states-of-america",
+       "status": "blocked to curl (403); page found in search index this session"
+      }
+     ],
+     "source": "TLScontact; France-Visas (US page)",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true,
+      "note": "US residents use TLScontact; other countries use their own provider"
+     },
+     "order": 9,
+     "dependsOn": [
+      "ld27",
+      "ld5",
+      "ld6",
+      "ld7",
+      "ld25",
+      "ld24"
+     ],
+     "estTime": "Half a day",
+     "cost": "TLScontact service fee plus visa fee",
+     "verify": "Which centre covers where you live, and current fees.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld28",
+      "move:m90_1",
+      "cl:b5"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld29",
+     "title": "When the visa arrives, check the sticker",
+     "phase": "C. Apply before you leave",
+     "steps": [
+      "Check your names and dates.",
+      "Check it names Saint-Martin or 'DFA'.",
+      "Check the type: 'VLS-TS visiteur' (needs online validation) or a temporary long-stay visa.",
+      "If anything is wrong, contact the consulate before you travel."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Long-stay visa (3 months to 1 year)",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162",
+       "status": "ok (200)"
+      },
+      {
+       "label": "service-public.fr: Visas for French overseas territories",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10610",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F16162 and F10610",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 10,
+     "dependsOn": [
+      "ld28"
+     ],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": "Which visa type the consulate issues for Saint-Martin visitors, and how renewal works.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld29",
+      "cl:b6"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "mw_3",
+     "title": "Keep proof of the day you arrived",
+     "phase": "D. After you arrive",
+     "steps": [
+      "If you land at SXM on the Dutch side, there is no French border check.",
+      "Keep your boarding passes and the Sint Maarten entry stamp.",
+      "Take a photo of them and save it."
+     ],
+     "links": [
+      {
+       "label": "Préfecture: Opening hours and contacts",
+       "url": "https://www.saint-barth-saint-martin.gouv.fr/Outils/Horaires-et-coordonnees",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Préfecture contacts",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 11,
+     "dependsOn": [
+      "ld29"
+     ],
+     "estTime": "5 min",
+     "cost": null,
+     "verify": "Ask the préfecture how your date of entry into French territory is proven.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "move:mw_3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld31",
+     "title": "Validate the VLS-TS online and pay the tax",
+     "phase": "D. After you arrive",
+     "steps": [
+      "Within 3 months of arriving, go to the ANEF website.",
+      "Pick the long-stay visa validation service (valider mon visa long séjour).",
+      "Enter your visa details, arrival date and address.",
+      "Pay the tax online with an e-stamp (timbre).",
+      "Save the confirmation. It proves you are legally resident."
+     ],
+     "links": [
+      {
+       "label": "ANEF: Online services for foreigners (visa validation, renewals)",
+       "url": "https://administration-etrangers-en-france.interieur.gouv.fr/particuliers/#/",
+       "status": "ok (200)"
+      },
+      {
+       "label": "service-public.fr: Long-stay visa (3 months to 1 year)",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "ANEF; service-public.fr F16162",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 12,
+     "dependsOn": [
+      "mw_3"
+     ],
+     "estTime": "30 min",
+     "cost": "Tax: shown on ANEF at payment",
+     "verify": "Whether ANEF validation works for a Saint-Martin address, or the préfecture does it. Confirm the current tax amount.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld31",
+      "legal:ld32",
+      "move:mf_v"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld34",
+     "title": "Make first contact with the préfecture",
+     "phase": "D. After you arrive",
+     "steps": [
+      "Open the préfecture's online appointment page.",
+      "Look for the 'Service Citoyenneté Immigration'.",
+      "Book an appointment to ask about your next steps and the renewal.",
+      "Address: Cité administrative, Concordia, Marigot."
+     ],
+     "links": [
+      {
+       "label": "Préfecture: Book an appointment online",
+       "url": "https://www.saint-barth-saint-martin.gouv.fr/Prendre-un-rendez-vous-en-ligne",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Préfecture: Citoyenneté, Immigration page",
+       "url": "https://www.saint-barth-saint-martin.gouv.fr/Demarches/Citoyennete-Immigration",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Préfecture: Opening hours and contacts",
+       "url": "https://www.saint-barth-saint-martin.gouv.fr/Outils/Horaires-et-coordonnees",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Préfecture de Saint-Barthélemy et Saint-Martin",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 13,
+     "dependsOn": [
+      "ld31"
+     ],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld34"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "im02",
+     "title": "Put the renewal window in your calendar",
+     "phase": "D. After you arrive",
+     "steps": [
+      "You apply for the visiteur card online, no earlier than 4 months and no later than 2 months before your visa ends.",
+      "Add a reminder 4 months before the end date.",
+      "Late applications can cost extra."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: 'Visiteur' residence card",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
+       "status": "ok (200)"
+      },
+      {
+       "label": "ANEF: Online services for foreigners (visa validation, renewals)",
+       "url": "https://administration-etrangers-en-france.interieur.gouv.fr/particuliers/#/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F302",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 14,
+     "dependsOn": [
+      "ld29"
+     ],
+     "estTime": "5 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld35",
+      "move:mm_2"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld35",
+     "title": "Apply for the visiteur residence card",
+     "phase": "D. After you arrive",
+     "steps": [
+      "Gather: passport, visa, proof of address less than 6 months old, proof of income, health insurance, handwritten no-work statement, e-photo code.",
+      "Sign the 'contrat d'engagement à respecter les principes de la République'.",
+      "Apply online on ANEF, or as the préfecture tells you.",
+      "Buy the timbres fiscaux when asked."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: 'Visiteur' residence card",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F302",
+       "status": "ok (200)"
+      },
+      {
+       "label": "ANEF: Online services for foreigners (visa validation, renewals)",
+       "url": "https://administration-etrangers-en-france.interieur.gouv.fr/particuliers/#/",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Préfecture: Citoyenneté, Immigration page",
+       "url": "https://www.saint-barth-saint-martin.gouv.fr/Demarches/Citoyennete-Immigration",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F302",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 15,
+     "dependsOn": [
+      "im02"
+     ],
+     "estTime": "2 hours",
+     "cost": "€350 per card in mainland France (€300 tax + €50 stamp)",
+     "verify": "Whether the same fee and online process apply at the Saint-Martin préfecture, and the document list it uses.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld35"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ld37",
+     "title": "Report your address to every office",
+     "phase": "D. After you arrive",
+     "steps": [
+      "Préfecture (it must have your current address).",
+      "Your home-country tax office, pension payer and banks (US: SSA, IRS Form 8822, Medicare).",
+      "Tick each one off in notes."
+     ],
+     "links": [
+      {
+       "label": "IRS: About Form 8822 (change of address)",
+       "url": "https://www.irs.gov/forms-pubs/about-form-8822",
+       "status": "ok (200)"
+      },
+      {
+       "label": "SSA: Contacts for services outside the US",
+       "url": "https://www.ssa.gov/foreign/foreign.htm",
+       "status": "blocked to curl (403); page found in search index this session"
+      }
+     ],
+     "source": "service-public.fr F302; IRS; SSA",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "needsVisa": true
+     },
+     "order": 16,
+     "dependsOn": [
+      "ld7"
+     ],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "legal:ld37",
+      "cl:f2"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "housing",
+   "title": "Housing",
+   "intro": "Rent first. Get a written lease, home insurance and utilities in your name. Those bills also become your proof of address.",
+   "appSection": "lease",
+   "appTrackerKey": "sxm-lease-docs2",
+   "saintMartinDiffers": "Saint-Martin has its own powers over housing, so the mainland rental law (loi de 1989) may not apply the same way. Electricity is EDF Archipel Guadeloupe and water is EEASM. There is a local ADIL for free housing-law advice.",
+   "items": [
+    {
+     "id": "hs01",
+     "title": "Decide: rent first, buy later",
+     "phase": "Search",
+     "steps": [
+      "Most newcomers rent for at least 6 to 12 months first.",
+      "Write your decision in notes."
+     ],
+     "links": [
+      {
+       "label": "Collectivité: Housing in Saint-Martin",
+       "url": "https://www.com-saint-martin.fr/thematiques/habitat-foncier-et-urbanisme/se-loger-a-saint-martin",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité: Se loger à Saint-Martin",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 1,
+     "dependsOn": [],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "d1",
+     "title": "Email 2 or 3 rental agencies on the French side",
+     "phase": "Search",
+     "steps": [
+      "Use the email draft in the Rentals section.",
+      "Say your dates, budget and number of bedrooms.",
+      "Ask what documents they want from you."
+     ],
+     "links": [],
+     "source": "Named source: the agencies",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 2,
+     "dependsOn": [],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "cl:d1"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hs02",
+     "title": "Prepare your tenant folder",
+     "phase": "Search",
+     "steps": [
+      "Passport for each person.",
+      "Proof of income (for example a pension or benefit letter).",
+      "Proof of your current address at home.",
+      "Your visa, once you have it.",
+      "Read the service-public page on what landlords may ask. Some requests, like bank statements, are not allowed in mainland France."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Documents a landlord may ask a future tenant for",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1169",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F1169",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 3,
+     "dependsOn": [
+      "it02"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": "Whether the mainland list of allowed tenant documents applies in Saint-Martin.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hs03",
+     "title": "Ask if the landlord wants a guarantor",
+     "phase": "Search",
+     "steps": [
+      "Ask the agency if a guarantor (garant) is needed.",
+      "If yes, ask what they accept: a bigger deposit, a bank guarantee, or Visale.",
+      "Write the answer in notes."
+     ],
+     "links": [
+      {
+       "label": "Visale: Free state rent guarantee",
+       "url": "https://www.visale.fr/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Named source: the agency; Visale",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 4,
+     "dependsOn": [
+      "d1"
+     ],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": "Whether Visale covers rentals in Saint-Martin.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "d2",
+     "title": "Book a short stay for your first 2 to 4 weeks",
+     "phase": "Search",
+     "steps": [
+      "Book a furnished short stay near Marigot.",
+      "Get the cancellation policy in writing."
+     ],
+     "links": [],
+     "source": "Named source: the host",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 5,
+     "dependsOn": [],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "cl:d2",
+      "move:m60_1"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "l1",
+     "title": "Get the draft lease before paying anything",
+     "phase": "Lease",
+     "steps": [
+      "Ask for the lease in French with an English copy if possible.",
+      "Do not pay a deposit until you have read it."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Clauses not allowed in a lease",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1686",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F1686 (clauses not allowed)",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 6,
+     "dependsOn": [
+      "d1"
+     ],
+     "estTime": "1 day",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "lease:l1"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "l2",
+     "title": "Get rent, charges, deposit and fees in writing",
+     "phase": "Lease",
+     "steps": [
+      "Monthly rent.",
+      "Monthly charges and what they cover.",
+      "Deposit amount.",
+      "Agency fee and who pays it."
+     ],
+     "links": [],
+     "source": "Named source: the lease",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 7,
+     "dependsOn": [
+      "l1"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "lease:l2"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "l3",
+     "title": "Write down which utilities are included",
+     "phase": "Lease",
+     "steps": [
+      "Electricity (électricité), water (eau), internet, building charges (charges de copropriété).",
+      "Ask for 2 or 3 recent electricity bills."
+     ],
+     "links": [],
+     "source": "Named source: the lease and landlord",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 8,
+     "dependsOn": [
+      "l1"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "lease:l3",
+      "lease:l8",
+      "cost:c1",
+      "cost:c2"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "l4",
+     "title": "Check the storm clause",
+     "phase": "Lease",
+     "steps": [
+      "Who closes the shutters?",
+      "What happens to rent if the home cannot be lived in after a storm?"
+     ],
+     "links": [],
+     "source": "Named source: the lease",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 9,
+     "dependsOn": [
+      "l1"
+     ],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "lease:l4",
+      "storm:st3"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "l5",
+     "title": "Check the notice period and early exit",
+     "phase": "Lease",
+     "steps": [
+      "How much notice must you give to leave?",
+      "Is there a fee to leave early?"
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Rules for furnished rentals",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2315",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F2315 (mainland furnished-rental rules)",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 10,
+     "dependsOn": [
+      "l1"
+     ],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": "Whether the 1989 housing law applies in Saint-Martin or a local rule does. Ask the ADIL.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "lease:l5"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hs04",
+     "title": "Ask the ADIL to look over the lease (free)",
+     "phase": "Lease",
+     "steps": [
+      "Open the Collectivité's ADIL page.",
+      "Call or book a visit.",
+      "Bring the draft lease and your questions."
+     ],
+     "links": [
+      {
+       "label": "Collectivité: ADIL (free housing-law advice)",
+       "url": "https://www.com-saint-martin.fr/thematiques/habitat-foncier-et-urbanisme/se-loger-a-saint-martin/agence-departementale-dinformaiton-sur-le-logement-adil",
+       "status": "ok (200)"
+      },
+      {
+       "label": "ANIL: National housing information agency",
+       "url": "https://www.anil.org/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité: ADIL page",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 11,
+     "dependsOn": [
+      "l1"
+     ],
+     "estTime": "1 hour",
+     "cost": "Free",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "l11",
+     "title": "Agree who pays for repairs",
+     "phase": "Lease",
+     "steps": [
+      "Air conditioning, appliances, pest control.",
+      "Get it in the lease or in an email."
+     ],
+     "links": [],
+     "source": "Named source: the lease",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 12,
+     "dependsOn": [
+      "l1"
+     ],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "lease:l11"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "l12",
+     "title": "Buy home insurance before you get the keys",
+     "phase": "Lease",
+     "steps": [
+      "Ask 2 insurers in Saint-Martin for a tenant policy (assurance habitation).",
+      "Ask about hurricane damage (catastrophe naturelle) and your belongings.",
+      "Give the certificate to the landlord when you get the keys."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Tenant home insurance obligation",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31300",
+       "status": "ok (200)"
+      },
+      {
+       "label": "service-public.fr: Optional extra cover for tenants",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1350",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F31300 and F1350",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 13,
+     "dependsOn": [
+      "l1"
+     ],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": "Whether tenant insurance is required by law in Saint-Martin as in mainland France. Your lease will likely require it anyway.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "lease:l12",
+      "storm:st10",
+      "cl:d4"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "l13",
+     "title": "Sign the lease",
+     "phase": "Lease",
+     "steps": [
+      "Sign only when the items above are done.",
+      "Keep a signed copy and a scan."
+     ],
+     "links": [],
+     "source": "Named source: the lease",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 14,
+     "dependsOn": [
+      "l2",
+      "l3",
+      "l4",
+      "l5",
+      "l11",
+      "l12"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "lease:l13",
+      "move:m30_2",
+      "cl:d4"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "l9",
+     "title": "Do the move-in inspection (état des lieux)",
+     "phase": "Lease",
+     "steps": [
+      "Walk through every room with the landlord or agent.",
+      "Take photos and a video with dates.",
+      "Write every mark or problem on the form before signing."
+     ],
+     "links": [],
+     "source": "Named source: the lease",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 15,
+     "dependsOn": [
+      "l13"
+     ],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "lease:l9"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "l10",
+     "title": "Note how and when you get the deposit back",
+     "phase": "Lease",
+     "steps": [
+      "Find the deposit return deadline in the lease.",
+      "Write it in notes."
+     ],
+     "links": [],
+     "source": "Named source: the lease",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 16,
+     "dependsOn": [
+      "l13"
+     ],
+     "estTime": "5 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "lease:l10"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hs05",
+     "title": "Open the electricity account in your name (EDF)",
+     "phase": "Utilities",
+     "steps": [
+      "Contact EDF Archipel Guadeloupe (it covers Saint-Martin).",
+      "Give your address, move-in date and meter reading.",
+      "Ask for bills in your name. They are your proof of address."
+     ],
+     "links": [
+      {
+       "label": "EDF Archipel Guadeloupe: contact (covers Saint-Martin)",
+       "url": "https://www.edf.gp/particulier/mon-agence/contact-0",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "EDF Archipel Guadeloupe",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 17,
+     "dependsOn": [
+      "l13"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "move:mf_2",
+      "move:m30_3",
+      "cl:d5"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hs06",
+     "title": "Open the water account in your name (EEASM)",
+     "phase": "Utilities",
+     "steps": [
+      "Contact EEASM.",
+      "Give your address and move-in date.",
+      "Ask for bills in your name."
+     ],
+     "links": [
+      {
+       "label": "EEASM: Water and sanitation, Saint-Martin",
+       "url": "https://www.eeasm.org/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "EEASM",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 18,
+     "dependsOn": [
+      "l13"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "move:mf_2",
+      "cl:d5"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "hs07",
+     "title": "Before buying: get advice first",
+     "phase": "If you buy later",
+     "steps": [
+      "Talk to the ADIL and a notaire (notary) before any offer.",
+      "Ask about local property taxes set by the Collectivité.",
+      "Ask about building and storm rules for the home."
+     ],
+     "links": [
+      {
+       "label": "Collectivité: ADIL (free housing-law advice)",
+       "url": "https://www.com-saint-martin.fr/thematiques/habitat-foncier-et-urbanisme/se-loger-a-saint-martin/agence-departementale-dinformaiton-sur-le-logement-adil",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Collectivité: Taxes for individuals",
+       "url": "https://www.com-saint-martin.fr/thematiques/impots-et-fiscalite/fiscalite-pour-les-particuliers",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité: ADIL; tax pages",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "plansToBuy": true
+     },
+     "order": 19,
+     "dependsOn": [
+      "hs01"
+     ],
+     "estTime": "2 hours",
+     "cost": null,
+     "verify": "Purchase costs and property taxes in Saint-Martin. These differ from mainland France.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "vehicles",
+   "title": "Vehicle, driving licence and insurance",
+   "intro": "Drive a rental at first. A non-EU licence works for 1 year after you become residents, then you must swap it at the Collectivité. Buying a car locally is usually simpler than shipping one.",
+   "appSection": "vehicles",
+   "appTrackerKey": "sxm-veh-docs2",
+   "saintMartinDiffers": "The Collectivité (Service des titres de circulation, 7 rue Victor Maurasse, Marigot) handles licences and registration. You do not use the mainland ANTS website. It issues a Saint-Martin licence, the fee is €150, and it wants a proof of address less than 3 months old. Plate numbers belong to the person, not the car.",
+   "items": [
+    {
+     "id": "v1",
+     "title": "Book a rental car for your arrival",
+     "phase": "First months",
+     "steps": [
+      "Book a car you can pick up at SXM.",
+      "Check the contract allows driving on the French side.",
+      "Check the insurance and the deductible."
+     ],
+     "links": [],
+     "source": "Named source: the rental company",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "plansToDrive": true
+     },
+     "order": 1,
+     "dependsOn": [],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "veh:v1",
+      "veh:v6",
+      "cl:g1",
+      "move:mw_1"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "v2",
+     "title": "Know your 1-year licence deadline",
+     "phase": "First months",
+     "steps": [
+      "A non-EU licence is valid for 1 year after you become residents.",
+      "The clock starts when your visa is validated or your first residence card is issued.",
+      "Put a reminder 9 months after that date."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Exchanging a non-European driving licence",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1460",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Collectivité: Exchanging a foreign driving licence",
+       "url": "https://www.com-saint-martin.fr/thematiques/mobilite-et-transport/demarches-permis-de-conduire/demande-dechange-de-permis-de-conduire-etranger",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F1460; Collectivité licence page",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "plansToDrive": true
+     },
+     "order": 2,
+     "dependsOn": [
+      "ld31"
+     ],
+     "estTime": "5 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "veh:v2",
+      "move:mm_3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "vh01",
+     "title": "Check if your licence can be swapped",
+     "phase": "First months",
+     "steps": [
+      "Open the service-public.fr licence exchange page.",
+      "Click the simulator 'Vérifier si un permis de conduire non européen est échangeable'.",
+      "Pick the country that issued your licence (for the US, also pick the state).",
+      "If your state is not on the list, you must pass the French test. You will not need the 20 hours of lessons."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Exchanging a non-European driving licence",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1460",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Collectivité: Exchanging a foreign driving licence",
+       "url": "https://www.com-saint-martin.fr/thematiques/mobilite-et-transport/demarches-permis-de-conduire/demande-dechange-de-permis-de-conduire-etranger",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F1460 (simulator); Collectivité",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "licenceIssuedOutsideEU": true
+     },
+     "order": 3,
+     "dependsOn": [],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": "Whether your issuing country (and US state) is on the list today.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "veh:v2"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "uw03",
+     "title": "Renew your current licence before you leave if it expires soon",
+     "phase": "First months",
+     "steps": [
+      "The licence must still be valid when you swap it.",
+      "If it expires in the next 18 months, renew it while you are still at home."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Exchanging a non-European driving licence",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1460",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F1460",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "licenceIssuedOutsideEU": true
+     },
+     "order": 4,
+     "dependsOn": [],
+     "estTime": "1 visit",
+     "cost": "State fee",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "vh02",
+     "title": "Order your driving record from the authority that issued your licence",
+     "phase": "Licence exchange",
+     "steps": [
+      "French offices call this 'attestation de droits à conduire'.",
+      "Order a certified driving record from the authority that issued your licence (US: your state DMV).",
+      "It must be less than 3 months old when you apply.",
+      "Order it about 1 month before you apply."
+     ],
+     "links": [
+      {
+       "label": "Collectivité: Document list for licence exchange (PDF)",
+       "url": "https://comsaintmartin.cdn.prismic.io/comsaintmartin/ERLUtyH8BYxvPBxg_LISTEECHANGEPERMISETRANGER.pdf",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité: licence exchange document list (PDF)",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "licenceIssuedOutsideEU": true
+     },
+     "order": 5,
+     "dependsOn": [
+      "vh01"
+     ],
+     "estTime": "20 min to order",
+     "cost": null,
+     "verify": "Whether the Collectivité also wants this record apostilled.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "vh03",
+     "title": "Get official translations of your licence and record",
+     "phase": "Licence exchange",
+     "steps": [
+      "Send scans of both sides of your licence and the driving record to a sworn translator.",
+      "Use the Basse-Terre Court of Appeal list (see Civil records)."
+     ],
+     "links": [
+      {
+       "label": "Basse-Terre Court of Appeal: approved experts and translators (covers Saint-Martin)",
+       "url": "https://www.guadeloupe.gouv.fr/Publications/Experts/Liste-des-experts-agrees-par-la-Cour-d-Appel-de-Basse-Terre",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Collectivité: Document list for licence exchange (PDF)",
+       "url": "https://comsaintmartin.cdn.prismic.io/comsaintmartin/ERLUtyH8BYxvPBxg_LISTEECHANGEPERMISETRANGER.pdf",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité: document list (PDF)",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "licenceIssuedOutsideEU": true
+     },
+     "order": 6,
+     "dependsOn": [
+      "vh02",
+      "cr04"
+     ],
+     "estTime": "1 to 2 weeks",
+     "cost": "Translator quote",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "vh04",
+     "title": "Put the licence exchange folder together",
+     "phase": "Licence exchange",
+     "steps": [
+      "2 colour copies of the licence (both sides) and the original.",
+      "Residence card or validated visa: copy and original.",
+      "Passport: copy and original.",
+      "Official translation of the licence.",
+      "Proof of address less than 3 months old: copy and original.",
+      "2 identical ID photos, 35 x 45 mm, grey or blue background.",
+      "Driving record less than 3 months old, with translation.",
+      "The filled-in form at the bottom of the PDF."
+     ],
+     "links": [
+      {
+       "label": "Collectivité: Document list for licence exchange (PDF)",
+       "url": "https://comsaintmartin.cdn.prismic.io/comsaintmartin/ERLUtyH8BYxvPBxg_LISTEECHANGEPERMISETRANGER.pdf",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité: document list (PDF)",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "licenceIssuedOutsideEU": true
+     },
+     "order": 7,
+     "dependsOn": [
+      "vh03",
+      "ld31"
+     ],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "veh:v12"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "v12",
+     "title": "Hand in the licence exchange at the Service des titres",
+     "phase": "Licence exchange",
+     "steps": [
+      "Go to the Service des titres de circulation, 7 rue Victor Maurasse, Marigot.",
+      "Phone first: 0590 87 61 91.",
+      "Hand in the folder. Pay €150 after they check it (cheque, cash or card).",
+      "Keep the receipt. Keep driving on your old licence only within the 1 year."
+     ],
+     "links": [
+      {
+       "label": "Collectivité: Exchanging a foreign driving licence",
+       "url": "https://www.com-saint-martin.fr/thematiques/mobilite-et-transport/demarches-permis-de-conduire/demande-dechange-de-permis-de-conduire-etranger",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Collectivité: Document list for licence exchange (PDF)",
+       "url": "https://comsaintmartin.cdn.prismic.io/comsaintmartin/ERLUtyH8BYxvPBxg_LISTEECHANGEPERMISETRANGER.pdf",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité de Saint-Martin",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "licenceIssuedOutsideEU": true
+     },
+     "order": 8,
+     "dependsOn": [
+      "vh04"
+     ],
+     "estTime": "Half a day",
+     "cost": "€150 each",
+     "verify": "Whether a Saint-Martin licence is accepted for driving in mainland France and the EU.",
+     "saintMartinDiff": "In mainland France this is done online on ANTS with a €40 stamp. In Saint-Martin it is in person at the Collectivité and costs €150.",
+     "mapsTo": [
+      "veh:v12",
+      "cl:g3",
+      "move:mm_3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "v4",
+     "title": "Get a sense of used car prices",
+     "phase": "Car",
+     "steps": [
+      "Find 3 to 5 similar cars for sale on the island.",
+      "Write the prices in notes."
+     ],
+     "links": [],
+     "source": "Named source: local classified ads",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "plansToOwnCar": true
+     },
+     "order": 9,
+     "dependsOn": [],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "veh:v4",
+      "cost:c6"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "vh05",
+     "title": "Decide: buy locally or ship a car from abroad",
+     "phase": "Car",
+     "steps": [
+      "Shipping a car from abroad means freight, customs paperwork and making it meet French rules.",
+      "Most people buy locally.",
+      "Write your decision in notes."
+     ],
+     "links": [
+      {
+       "label": "French Customs (Douane): individuals",
+       "url": "https://www.douane.gouv.fr/particuliers",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "French Customs (Douane)",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "plansToOwnCar": true
+     },
+     "order": 10,
+     "dependsOn": [],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": "Customs rules and taxes for bringing a car into Saint-Martin. Ask the Douane office in Saint-Martin.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "move:m90_6",
+      "veh:v10"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "v9",
+     "title": "Have a mechanic check the car before you buy",
+     "phase": "Car",
+     "steps": [
+      "Find an independent mechanic.",
+      "Pay for a pre-purchase check."
+     ],
+     "links": [],
+     "source": "Named source: the mechanic",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "plansToOwnCar": true
+     },
+     "order": 11,
+     "dependsOn": [
+      "v4"
+     ],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "veh:v9"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "vh06",
+     "title": "Get the seller's papers",
+     "phase": "Car",
+     "steps": [
+      "The registration certificate signed over to you.",
+      "A sale certificate (certificat de cession).",
+      "A recent 'certificat de situation administrative' (shows no loan or block on the car)."
+     ],
+     "links": [
+      {
+       "label": "Collectivité: Registering a vehicle (carte grise)",
+       "url": "https://www.com-saint-martin.fr/thematiques/mobilite-et-transport/demarches-vehicule/demande-dimmatriculation-dun-vehicule",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité: vehicle registration page",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "plansToOwnCar": true
+     },
+     "order": 12,
+     "dependsOn": [
+      "v9"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "v5",
+     "title": "Buy car insurance before you drive the car away",
+     "phase": "Car",
+     "steps": [
+      "Third-party liability (responsabilité civile) is required by law.",
+      "Ask 2 insurers in Saint-Martin for a price, with and without full cover.",
+      "Ask if the policy covers driving on the Dutch side."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Compulsory car insurance (third party)",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2628",
+       "status": "ok (200)"
+      },
+      {
+       "label": "service-public.fr: Optional car cover and 'tous risques'",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2622",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F2628 and F2622",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "plansToOwnCar": true
+     },
+     "order": 13,
+     "dependsOn": [
+      "vh06"
+     ],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": "Cover for the Dutch side of the island.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "veh:v5",
+      "cl:g2"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "v11",
+     "title": "Register the car at the Service des titres",
+     "phase": "Car",
+     "steps": [
+      "Fill in the CERFA form from the Collectivité's registration page.",
+      "Bring the seller's papers, your ID, proof of address and insurance.",
+      "Pay the fee: €36 per fiscal horsepower (cheval vapeur) for cars under 10 years old, €18 for older.",
+      "Collect the certificate within 3 months, or it is archived."
+     ],
+     "links": [
+      {
+       "label": "Collectivité: Registering a vehicle (carte grise)",
+       "url": "https://www.com-saint-martin.fr/thematiques/mobilite-et-transport/demarches-vehicule/demande-dimmatriculation-dun-vehicule",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité: Demande d'immatriculation",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "plansToOwnCar": true
+     },
+     "order": 14,
+     "dependsOn": [
+      "v5"
+     ],
+     "estTime": "Half a day",
+     "cost": "€36 or €18 per fiscal horsepower",
+     "verify": null,
+     "saintMartinDiff": "Saint-Martin gives the plate number to the person. You keep it if you change cars.",
+     "mapsTo": [
+      "veh:v11",
+      "cl:g3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "vh07",
+     "title": "Ask about the vehicle inspection (contrôle technique)",
+     "phase": "Car",
+     "steps": [
+      "Ask the Service des titres or the seller if a contrôle technique is required, and how often."
+     ],
+     "links": [
+      {
+       "label": "Collectivité: Registering a vehicle (carte grise)",
+       "url": "https://www.com-saint-martin.fr/thematiques/mobilite-et-transport/demarches-vehicule/demande-dimmatriculation-dun-vehicule",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Collectivité: Service des titres",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "plansToDrive": true,
+      "plansToOwnCar": true
+     },
+     "order": 15,
+     "dependsOn": [
+      "v11"
+     ],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": "Whether and how often a technical inspection is required in Saint-Martin.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "mail",
+   "title": "Mail and proof of address",
+   "intro": "Keep a way to get mail from your home country, set up your Saint-Martin address, and keep recent bills in your name. Almost every French office asks for a 'justificatif de domicile'.",
+   "appSection": "mail",
+   "appTrackerKey": null,
+   "saintMartinDiffers": "Saint-Martin's postcode is 97150. Many homes use a La Poste box (BP). How recent the proof must be differs by office: the Collectivité wants less than 3 months for a licence, while the visiteur card accepts less than 6 months. The automatic address check 'Justif'Adresse' does not work in a COM like Saint-Martin.",
+   "items": [
+    {
+     "id": "ml01",
+     "title": "Choose how you will get mail from your home country",
+     "phase": "Home-country mail",
+     "steps": [
+      "Option 1: a virtual mailbox service that scans your mail.",
+      "Option 2: a trusted family member's address.",
+      "Check that your banks and tax office accept the address you choose.",
+      "Write the choice in notes."
+     ],
+     "links": [],
+     "source": "Named source: the mailbox provider; your banks",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 1,
+     "dependsOn": [],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": "Whether your bank and your home state or region accept a virtual mailbox address.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "move:m60_4",
+      "cl:f2"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ml02",
+     "title": "File a USPS change of address in person",
+     "phase": "Home-country mail",
+     "steps": [
+      "USPS says you must file in person at a Post Office if you are moving outside the US.",
+      "Go to a Post Office and give the home-country mail address from the step above.",
+      "Pick the start date."
+     ],
+     "links": [
+      {
+       "label": "USPS: Change of address / forwarding",
+       "url": "https://www.usps.com/manage/forward.htm",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "USPS: Change of address",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "residesIn": [
+       "US"
+      ]
+     },
+     "order": 2,
+     "dependsOn": [
+      "ml01"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": "Whether USPS forwards to a foreign address. Plan as if it does not.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ml03",
+     "title": "Ask the landlord how mail reaches the home",
+     "phase": "Saint-Martin address",
+     "steps": [
+      "Ask if La Poste delivers to the street address.",
+      "Write the exact address format in notes, ending with '97150 Saint-Martin'."
+     ],
+     "links": [
+      {
+       "label": "La Poste",
+       "url": "https://www.laposte.fr/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Named source: your landlord; La Poste",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 3,
+     "dependsOn": [
+      "l13"
+     ],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": "Whether La Poste delivers to your street.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ml04",
+     "title": "If needed, rent a La Poste box (BP)",
+     "phase": "Saint-Martin address",
+     "steps": [
+      "Go to a La Poste office (Marigot, Grand-Case, Galisbay or Quartier d'Orléans).",
+      "Ask for a 'Boîte Postale Flexigo'.",
+      "Bring ID and proof of address."
+     ],
+     "links": [
+      {
+       "label": "La Poste: Renting a post office box (Flexigo)",
+       "url": "https://www.laposte.fr/conseils-pratiques/louer-une-boite-aux-lettres-pour-particulier",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "La Poste: Flexigo",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 4,
+     "dependsOn": [
+      "ml03"
+     ],
+     "estTime": "1 visit",
+     "cost": "Yearly fee: ask La Poste",
+     "verify": "Availability and price at your nearest office.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ml05",
+     "title": "Learn what counts as proof of address",
+     "phase": "Proof of address",
+     "steps": [
+      "A bill in your name: electricity, water, phone or internet.",
+      "Your home insurance certificate, or a rent receipt from an agency.",
+      "If someone hosts you: their signed letter, their ID and their bill.",
+      "Note how recent each office wants it (3 or 6 months)."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Which proof of address is accepted (ID papers)",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14807",
+       "status": "ok (200)"
+      },
+      {
+       "label": "service-public.fr: Proof of address for a driving licence",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31847",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Collectivité: Document list for licence exchange (PDF)",
+       "url": "https://comsaintmartin.cdn.prismic.io/comsaintmartin/ERLUtyH8BYxvPBxg_LISTEECHANGEPERMISETRANGER.pdf",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F14807 and F31847; Collectivité licence list",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 5,
+     "dependsOn": [],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": "Justif'Adresse (automatic check) cannot be used in a COM like Saint-Martin.",
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ml06",
+     "title": "Keep the 3 latest bills in one folder",
+     "phase": "Proof of address",
+     "steps": [
+      "Each month, save the newest electricity, water and phone bills as PDFs.",
+      "Remove anything older than 6 months from the folder."
+     ],
+     "links": [],
+     "source": "Named source: your bills",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 6,
+     "dependsOn": [
+      "hs05",
+      "hs06"
+     ],
+     "estTime": "5 min a month",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ml07",
+     "title": "Register to vote from abroad (each adult)",
+     "phase": "Voting from abroad",
+     "steps": [
+      "Go to fvap.gov.",
+      "Fill in the Federal Post Card Application (FPCA).",
+      "Use your last US address as your voting address.",
+      "Ask for ballots by email if your state allows it.",
+      "Send it to your local election office. Do this every January."
+     ],
+     "links": [
+      {
+       "label": "FVAP: Federal Voting Assistance Program",
+       "url": "https://www.fvap.gov/",
+       "status": "ok (200)"
+      },
+      {
+       "label": "FVAP: Voting as a US citizen abroad",
+       "url": "https://www.fvap.gov/citizen-voter",
+       "status": "ok (200)"
+      },
+      {
+       "label": "FVAP: State-by-state voting guide",
+       "url": "https://www.fvap.gov/guide",
+       "status": "ok (200)"
+      },
+      {
+       "label": "State Dept: Voting from abroad",
+       "url": "https://travel.state.gov/content/travel/en/international-travel/while-abroad/voting.html",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "FVAP; State Dept",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ]
+     },
+     "order": 7,
+     "dependsOn": [],
+     "estTime": "20 min",
+     "cost": "Free",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ml08",
+     "title": "Save the backup ballot option",
+     "phase": "Voting from abroad",
+     "steps": [
+      "If your ballot does not arrive in time, use the Federal Write-In Absentee Ballot from fvap.gov.",
+      "Add a reminder 45 days before each election."
+     ],
+     "links": [
+      {
+       "label": "FVAP: Federal Voting Assistance Program",
+       "url": "https://www.fvap.gov/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "FVAP",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ]
+     },
+     "order": 8,
+     "dependsOn": [
+      "ml07"
+     ],
+     "estTime": "5 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "phones",
+   "title": "Phone and internet",
+   "intro": "Keep your home-country numbers for bank sign-in codes, get a local SIM, and check home internet at your exact address.",
+   "appSection": "phones",
+   "appTrackerKey": "sxm-phone-docs2",
+   "saintMartinDiffers": "French-side carriers are Orange Caraïbe, Digicel, Free Caraïbe and Dauphin Telecom. Near the border your phone can switch to a Dutch-side network, which can cost roaming fees.",
+   "items": [
+    {
+     "id": "ph1",
+     "title": "Check your current plan's roaming in Saint-Martin",
+     "phase": "Keep your current numbers",
+     "steps": [
+      "Open your carrier's app or website.",
+      "Search for Saint Martin and Sint Maarten.",
+      "Note the price per day or month for each line."
+     ],
+     "links": [
+      {
+       "label": "T-Mobile: International roaming plans",
+       "url": "https://www.t-mobile.com/cell-phone-plans/international-roaming-plans",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Your carrier (example: T-Mobile international roaming page)",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 1,
+     "dependsOn": [],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "phone:ph1",
+      "move:m60_7"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "pn01",
+     "title": "Decide how to keep each current number",
+     "phase": "Keep your current numbers",
+     "steps": [
+      "Option 1: keep a cheap plan with roaming.",
+      "Option 2: move the number to an internet calling service (for US numbers, Google Voice).",
+      "Check your bank sends sign-in codes to the option you pick. Some banks do not send codes to internet numbers.",
+      "Write the choice for each number in notes."
+     ],
+     "links": [
+      {
+       "label": "Google Voice Help: Porting numbers",
+       "url": "https://support.google.com/voice/answer/1065667",
+       "status": "ok (200)"
+      },
+      {
+       "label": "T-Mobile: International roaming plans",
+       "url": "https://www.t-mobile.com/cell-phone-plans/international-roaming-plans",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Google Voice Help; your carrier",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 2,
+     "dependsOn": [],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": "Whether each bank sends sign-in codes to your chosen option.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "phone:ph7"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "pn02",
+     "title": "If you chose Google Voice: move the number before you leave",
+     "phase": "Keep your current numbers",
+     "steps": [
+      "Do this while you are still in the US.",
+      "Follow Google's porting steps.",
+      "Test a call and a text."
+     ],
+     "links": [
+      {
+       "label": "Google Voice Help: Porting numbers",
+       "url": "https://support.google.com/voice/answer/1065667",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Google Voice Help",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "homeNumberCountry": [
+       "US"
+      ],
+      "keepNumberVia": "Google Voice"
+     },
+     "order": 3,
+     "dependsOn": [
+      "pn01"
+     ],
+     "estTime": "1 hour plus waiting",
+     "cost": "Google's porting fee",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ph5",
+     "title": "Check each phone is unlocked and takes an eSIM",
+     "phase": "Keep your current numbers",
+     "steps": [
+      "Ask your carrier to confirm each phone is unlocked.",
+      "Check the phone's settings for eSIM."
+     ],
+     "links": [],
+     "source": "Named source: your carrier",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 4,
+     "dependsOn": [],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "phone:ph5",
+      "move:m60_7"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ph2",
+     "title": "Turn on roaming on each line before the flight",
+     "phase": "Keep your current numbers",
+     "steps": [
+      "Turn on international roaming in the carrier app.",
+      "Test it on arrival."
+     ],
+     "links": [
+      {
+       "label": "T-Mobile: International roaming plans",
+       "url": "https://www.t-mobile.com/cell-phone-plans/international-roaming-plans",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Your carrier",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 5,
+     "dependsOn": [
+      "ph1"
+     ],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "phone:ph2"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ph4",
+     "title": "Protect your email account",
+     "phase": "Keep your current numbers",
+     "steps": [
+      "Turn on 2-step sign-in with an authenticator app.",
+      "Save the recovery codes in a safe place (not in this app)."
+     ],
+     "links": [],
+     "source": "Named source: your email provider",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 6,
+     "dependsOn": [],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "phone:ph4"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ph6",
+     "title": "Compare local carriers",
+     "phase": "Local mobile",
+     "steps": [
+      "Look at Orange Caraïbe, Digicel, Free Caraïbe and Dauphin Telecom.",
+      "Ask about price, data, eSIM, and calls to your home country.",
+      "Ask a neighbour which one works best at your address."
+     ],
+     "links": [
+      {
+       "label": "Orange Caraïbe",
+       "url": "https://caraibe.orange.fr/",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Digicel (French Antilles)",
+       "url": "https://www.digicel.fr/",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Free Caraïbe",
+       "url": "https://caraibe.free.fr/forfaits/",
+       "status": "ok (200)"
+      },
+      {
+       "label": "Dauphin Telecom",
+       "url": "https://www.dauphintelecom.com/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Each carrier's website",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 7,
+     "dependsOn": [],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": "Prices, eSIM support, and what ID each carrier wants (passport, proof of address).",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "phone:ph6"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "pn03",
+     "title": "Buy a local SIM or eSIM in a shop",
+     "phase": "Local mobile",
+     "steps": [
+      "Bring your passport and proof of address.",
+      "Ask the shop to set it up and test it before you leave."
+     ],
+     "links": [],
+     "source": "Named source: the carrier shop",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 8,
+     "dependsOn": [
+      "ph6"
+     ],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "move:mw_4"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ph8",
+     "title": "Set up WhatsApp and Wi-Fi calling",
+     "phase": "Local mobile",
+     "steps": [
+      "Install WhatsApp and log in with a number you will keep.",
+      "Turn on Wi-Fi calling on your current line if your carrier allows it."
+     ],
+     "links": [],
+     "source": "Named source: your carrier",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 9,
+     "dependsOn": [],
+     "estTime": "15 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "phone:ph8"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "ph9",
+     "title": "Watch out for Dutch-side networks",
+     "phase": "Local mobile",
+     "steps": [
+      "Near the border your phone may connect to a Dutch-side network.",
+      "If your plan charges for that, pick a French network manually in settings."
+     ],
+     "links": [],
+     "source": "Named source: your plan's terms",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 10,
+     "dependsOn": [],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "phone:ph9"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "in2",
+     "title": "Check Orange fibre at the exact address",
+     "phase": "Home internet",
+     "steps": [
+      "Use Orange Caraïbe's fibre page for Saint-Martin.",
+      "Enter the exact address.",
+      "Ask for install time, contract length and price in writing."
+     ],
+     "links": [
+      {
+       "label": "Orange Caraïbe: Fibre in Saint-Martin",
+       "url": "https://caraibe.orange.fr/fibre-saint-martin",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Orange Caraïbe",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 11,
+     "dependsOn": [
+      "l1"
+     ],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "inet:in2",
+      "cost:c3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "in3",
+     "title": "Check Dauphin Telecom at the exact address",
+     "phase": "Home internet",
+     "steps": [
+      "Contact Dauphin Telecom with the exact address.",
+      "Ask the same questions."
+     ],
+     "links": [
+      {
+       "label": "Dauphin Telecom",
+       "url": "https://www.dauphintelecom.com/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Dauphin Telecom",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 12,
+     "dependsOn": [
+      "l1"
+     ],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "inet:in3"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "in4",
+     "title": "Check Starlink as a backup",
+     "phase": "Home internet",
+     "steps": [
+      "Check Starlink's coverage map for Saint-Martin.",
+      "Get the landlord's written OK to mount the dish."
+     ],
+     "links": [
+      {
+       "label": "Starlink",
+       "url": "https://www.starlink.com/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Starlink",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 13,
+     "dependsOn": [],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": "Live price and plan for French Saint-Martin.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "inet:in4",
+      "inet:in5",
+      "cost:c4"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "pn04",
+     "title": "Give banks and offices your new local number",
+     "phase": "Home internet",
+     "steps": [
+      "Add your local number as a second contact where allowed.",
+      "Keep your home-country number as the main one for sign-in codes."
+     ],
+     "links": [],
+     "source": "Named source: each bank",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 14,
+     "dependsOn": [
+      "pn03"
+     ],
+     "estTime": "30 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "leaving-home",
+   "title": "Leaving your home country (added)",
+   "intro": "Things to close or set up before you go. Added because they are easy to miss.",
+   "appSection": "moveprep",
+   "appTrackerKey": "sxm-move-docs2",
+   "saintMartinDiffers": null,
+   "items": [
+    {
+     "id": "uw01",
+     "title": "Decide which place stays your legal 'home' for taxes and voting",
+     "phase": null,
+     "steps": [
+      "This affects voting, home-country tax and your driving licence.",
+      "Ask your tax preparer.",
+      "Write the decision in notes."
+     ],
+     "links": [
+      {
+       "label": "FVAP: State-by-state voting guide",
+       "url": "https://www.fvap.gov/guide",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "FVAP state guide (US); your preparer",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 1,
+     "dependsOn": [
+      "tx1"
+     ],
+     "estTime": "Part of the tax call",
+     "cost": null,
+     "verify": "The rules of your home state or country.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "uw02",
+     "title": "Plan the end of any home-country health insurance",
+     "phase": null,
+     "steps": [
+      "Pick an end date for your current health plan.",
+      "Make sure the new plan starts first, with no gap."
+     ],
+     "links": [],
+     "source": "Named source: your current insurer",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 2,
+     "dependsOn": [
+      "h9"
+     ],
+     "estTime": "20 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "uw04",
+     "title": "Update your will and beneficiaries",
+     "phase": null,
+     "steps": [
+      "Ask an estate lawyer if your current will works for things you will own in Saint-Martin.",
+      "French inheritance rules can apply to property there.",
+      "Check the beneficiaries on your accounts."
+     ],
+     "links": [],
+     "source": "Named source: an estate lawyer; a notaire in Saint-Martin",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 3,
+     "dependsOn": [],
+     "estTime": "1 to 2 hours",
+     "cost": null,
+     "verify": "How French inheritance rules apply to foreign nationals living in Saint-Martin.",
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "uw05",
+     "title": "Set up powers of attorney at home",
+     "phase": null,
+     "steps": [
+      "Sign a power of attorney so someone you trust can handle matters at home.",
+      "Sign a health care proxy.",
+      "Do this before you leave. It is harder from abroad."
+     ],
+     "links": [],
+     "source": "Named source: a lawyer in your home country",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "each adult",
+     "appliesWhen": null,
+     "order": 4,
+     "dependsOn": [],
+     "estTime": "1 to 2 hours",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "m30_6",
+     "title": "Cancel or pause services at home",
+     "phase": null,
+     "steps": [
+      "List subscriptions, utilities, gym, storage and insurance.",
+      "Pick an end date for each and cancel it.",
+      "Tick each one off in notes."
+     ],
+     "links": [],
+     "source": "Named source: each service",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 5,
+     "dependsOn": [],
+     "estTime": "2 hours",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "move:m30_6"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "mv_home",
+     "title": "Close out your current home",
+     "phase": null,
+     "steps": [
+      "Find your lease end or sale date and put it in the app (Home screen).",
+      "Book the final inspection.",
+      "Shut off utilities and give a forwarding address for the deposit."
+     ],
+     "links": [],
+     "source": "Named source: your current lease",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 6,
+     "dependsOn": [],
+     "estTime": "Half a day",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "move:mv_home",
+      "cl:f3",
+      "cl:a1"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "pt01",
+     "title": "If you have pets: start the pet travel rules early",
+     "phase": null,
+     "steps": [
+      "Open the Shipping & Pets section in the app.",
+      "Check the rules for your animal with DAAF Guadeloupe, which covers Saint-Martin.",
+      "Check your airline's pet rules."
+     ],
+     "links": [],
+     "source": "Named source: DAAF Guadeloupe (linked in the app's Shipping & Pets section)",
+     "sourceNote": "No official page for this step; confirm with the named provider.",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "hasPets": true
+     },
+     "order": 7,
+     "dependsOn": [],
+     "estTime": "1 hour",
+     "cost": null,
+     "verify": "Current rules for your animal and country of origin.",
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "ship:s8"
+     ],
+     "lastVerified": null,
+     "reviewEvery": "6 months",
+     "done": false,
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "safety-consular",
+   "title": "Safety and consular help (added)",
+   "intro": "Who to call in an emergency, and how your government can reach you.",
+   "appSection": "embassies",
+   "appTrackerKey": null,
+   "saintMartinDiffers": "For US citizens, consular help for French Saint-Martin comes from the US Embassy in Bridgetown, Barbados, not the US Consulate in Curaçao that covers Sint Maarten.",
+   "items": [
+    {
+     "id": "sc03",
+     "title": "Save French emergency numbers",
+     "phase": null,
+     "steps": [
+      "15 medical, 17 police, 18 fire, 112 any emergency.",
+      "Save them in every phone."
+     ],
+     "links": [
+      {
+       "label": "service-public.fr: Emergency numbers (15, 17, 18, 112)",
+       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33954",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "service-public.fr F33954",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 1,
+     "dependsOn": [],
+     "estTime": "5 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "sc01",
+     "title": "Sign up for your government's travel alerts (US: STEP)",
+     "phase": null,
+     "steps": [
+      "US citizens: go to the State Department's STEP site.",
+      "Create an account and add your Saint-Martin address.",
+      "You will get safety and storm alerts."
+     ],
+     "links": [
+      {
+       "label": "STEP: Smart Traveler Enrollment Program",
+       "url": "https://mytravel.state.gov/s/step",
+       "status": "blocked to automated check (403); official page, open in a browser"
+      }
+     ],
+     "source": "State Dept: STEP",
+     "appliesTo": "each adult",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ]
+     },
+     "order": 2,
+     "dependsOn": [],
+     "estTime": "15 min",
+     "cost": "Free",
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "cl:h4"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "sc02",
+     "title": "Save your embassy's contact details",
+     "phase": null,
+     "steps": [
+      "US citizens: save the US Embassy Bridgetown contacts.",
+      "Read the French West Indies page for the local consular agent."
+     ],
+     "links": [
+      {
+       "label": "US Embassy Bridgetown (covers the French West Indies)",
+       "url": "https://bb.usembassy.gov/",
+       "status": "ok (200)"
+      },
+      {
+       "label": "State Dept: French West Indies country page",
+       "url": "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/FrenchWestIndies.html",
+       "status": "blocked to curl (403); page found in search index this session"
+      }
+     ],
+     "source": "State Dept: French West Indies page",
+     "appliesTo": "household",
+     "appliesWhen": {
+      "citizenship": [
+       "US"
+      ]
+     },
+     "order": 3,
+     "dependsOn": [],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [
+      "move:m30_7"
+     ],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    },
+    {
+     "id": "sc04",
+     "title": "Know what to do if a passport is lost",
+     "phase": null,
+     "steps": [
+      "Keep passport scans in the cloud.",
+      "Save your embassy's lost-passport instructions."
+     ],
+     "links": [
+      {
+       "label": "US Embassy Bridgetown (covers the French West Indies)",
+       "url": "https://bb.usembassy.gov/",
+       "status": "ok (200)"
+      }
+     ],
+     "source": "Your embassy (US: Embassy Bridgetown)",
+     "appliesTo": "household",
+     "appliesWhen": null,
+     "order": 4,
+     "dependsOn": [],
+     "estTime": "10 min",
+     "cost": null,
+     "verify": null,
+     "saintMartinDiff": null,
+     "mapsTo": [],
+     "lastVerified": "2026-10-28",
+     "reviewEvery": "12 months",
+     "done": false,
+     "notes": ""
+    }
+   ]
+  }
+ ]
+}
